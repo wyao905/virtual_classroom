@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  date: MyString
+  instructor: one
+  student: one
+  lecture: one
+
+two:
+  content: MyString
+  date: MyString
+  instructor: two
+  student: two
+  lecture: two
