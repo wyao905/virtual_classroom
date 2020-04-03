@@ -55,3 +55,18 @@ function enrollmentsReducer(state = [], action) {
         return state;
     }
 }
+
+function lecturesReducer(state = [], action) {
+    let idx;
+    switch (action.type) {
+      case "ADD_LECTURE":
+        return [...state, action.lecture];
+   
+      case "REMOVE_LECTURE":
+        idx = state.findIndex(lecture => lecture.id === action.id)
+        return [...state.slice(0, idx), ...state.slice(idx + 1)];
+   
+      default:
+        return state;
+    }
+}
