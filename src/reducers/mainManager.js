@@ -70,3 +70,18 @@ function lecturesReducer(state = [], action) {
         return state;
     }
 }
+
+function messagesReducer(state = [], action) {
+    let idx;
+    switch (action.type) {
+      case "ADD_MESSAGE":
+        return [...state, action.message];
+   
+      case "REMOVE_MESSAGE":
+        idx = state.findIndex(message => message.id === action.id)
+        return [...state.slice(0, idx), ...state.slice(idx + 1)];
+   
+      default:
+        return state;
+    }
+}
