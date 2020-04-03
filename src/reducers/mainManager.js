@@ -85,3 +85,18 @@ function messagesReducer(state = [], action) {
         return state;
     }
 }
+
+function subjectsReducer(state = [], action) {
+    let idx;
+    switch (action.type) {
+      case "ADD_SUBJECT":
+        return [...state, action.subject];
+   
+      case "REMOVE_SUBJECT":
+        idx = state.findIndex(subject => subject.id === action.id)
+        return [...state.slice(0, idx), ...state.slice(idx + 1)];
+   
+      default:
+        return state;
+    }
+}
