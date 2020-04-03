@@ -25,3 +25,18 @@ function studentsReducer(state = [], action) {
         return state;
     }
 }
+
+function instructorsReducer(state = [], action) {
+    let idx;
+    switch (action.type) {
+      case "ADD_INSTRUCTOR":
+        return [...state, action.instructor];
+   
+      case "REMOVE_INSTRUCTOR":
+        idx = state.findIndex(instructor => instructor.id === action.id)
+        return [...state.slice(0, idx), ...state.slice(idx + 1)];
+   
+      default:
+        return state;
+    }
+}
