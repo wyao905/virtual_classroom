@@ -1,7 +1,7 @@
 import './App.css';
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import 
+import {initialFetch} from './actions/fetchActions'
 
 function App() {
   return (
