@@ -1,6 +1,6 @@
 class StudentSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name
+  attributes :name, :email
 
   has_many :enrollments
   has_many :messages
