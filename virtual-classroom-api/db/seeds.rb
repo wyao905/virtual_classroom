@@ -7,13 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Instructors
-minerva = Instructor.create(name: "Minerva McGonagall")
-severus = Instructor.create(name: "Severus Snape")
+minerva = Instructor.create(
+    name: "Minerva McGonagall",
+    password: "gryffindor",
+    email: "mcgonagall@hogwarts.com"
+)
+severus = Instructor.create(
+    name: "Severus Snape",
+    password: "halfbloodprince",
+    email: "potionmaster@hogwarts.com"
+)
 
 # Students
-ron = Student.create(name: "Ron Weasley")
-hermoine = Student.create(name: "Hermoine Granger")
-harry = Student.create(name: "Harry Potter")
+ron = Student.create(
+    name: "Ron Weasley",
+    password: "ron",
+    email: "keeper@hogwarts.com"
+)
+hermoine = Student.create(
+    name: "Hermoine Granger",
+    password: "hermoine",
+    email: "genius@hogwarts.com"
+)
+harry = Student.create(
+    name: "Harry Potter",
+    password: "harry",
+    email: "thechosenone@hogwarts.com"
+)
 
 # Subjects
 transfiguration = Subject.create(name: "Transfiguration", instructor: minerva)
