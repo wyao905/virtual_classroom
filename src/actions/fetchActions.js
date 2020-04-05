@@ -31,6 +31,8 @@ export const checkLogin = (user) => {
             .then(response => {return response.json()})
             .then(verifiedUser => {
                 console.log(verifiedUser)
+                // check for error to see if user was logged in
+                // set current user to state
             })
     }
 }
