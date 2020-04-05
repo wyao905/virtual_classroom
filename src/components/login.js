@@ -22,6 +22,12 @@ class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+        this.props.checkLogin(this.state)
+        this.setState({
+            email: "",
+            password: "",
+            userSelectOption: null
+        })
     }
 
     render() {

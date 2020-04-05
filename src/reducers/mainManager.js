@@ -109,9 +109,11 @@ function subjectsReducer(state = [], action) {
 }
 
 function loadingReducer(state = false, action) {
-  if(action.type.indexOf("LOADING") > -1) {
-    return true
-  } else {
-    return false
+  switch(action.type) {
+    case "LOADING":
+      return true
+    
+    default:
+      return false
   }
 }

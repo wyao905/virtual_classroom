@@ -1,7 +1,7 @@
 import './App.css'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {initialFetch} from './actions/fetchActions'
+import {initialFetch, checkLogin} from './actions/fetchActions'
 import Login from './components/login'
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login/>
+        <Login checkLogin={this.props.checkLogin}/>
       </div>
     );
   }
@@ -26,7 +26,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    initialFetch: () => dispatch(initialFetch())
+    initialFetch: () => dispatch(initialFetch()),
+    checkLogin: (user) => dispatch(checkLogin(user))
   }
 }
 
