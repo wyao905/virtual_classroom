@@ -6,14 +6,15 @@ const rootReducer = combineReducers({
     enrollments: enrollmentsReducer,
     lectures: lecturesReducer,
     messages: messagesReducer,
-    subjects: subjectsReducer
+    subjects: subjectsReducer,
+    loading: loadingReducer
 })
 
 export default rootReducer
 
 function studentsReducer(state = [], action) {
     let idx;
-    switch (action.type) {
+    switch(action.type) {
       case "ADD_STUDENTS":
         return [action.students]
 
@@ -31,7 +32,7 @@ function studentsReducer(state = [], action) {
 
 function instructorsReducer(state = [], action) {
     let idx;
-    switch (action.type) {
+    switch(action.type) {
       case "ADD_INSTRUCTORS":
         return [action.instructors]
 
@@ -49,7 +50,7 @@ function instructorsReducer(state = [], action) {
 
 function enrollmentsReducer(state = [], action) {
     let idx;
-    switch (action.type) {
+    switch(action.type) {
       case "ADD_ENROLLMENT":
         return [...state, action.enrollment];
    
@@ -64,7 +65,7 @@ function enrollmentsReducer(state = [], action) {
 
 function lecturesReducer(state = [], action) {
     let idx;
-    switch (action.type) {
+    switch(action.type) {
       case "ADD_LECTURE":
         return [...state, action.lecture];
    
@@ -79,7 +80,7 @@ function lecturesReducer(state = [], action) {
 
 function messagesReducer(state = [], action) {
     let idx;
-    switch (action.type) {
+    switch(action.type) {
       case "ADD_MESSAGE":
         return [...state, action.message];
    
@@ -94,7 +95,7 @@ function messagesReducer(state = [], action) {
 
 function subjectsReducer(state = [], action) {
     let idx;
-    switch (action.type) {
+    switch(action.type) {
       case "ADD_SUBJECT":
         return [...state, action.subject];
    
@@ -105,4 +106,12 @@ function subjectsReducer(state = [], action) {
       default:
         return state;
     }
+}
+
+function loadingReducer(state = false, action) {
+  if(action.type.indexOf("LOADING") > -1) {
+    return true
+  } else {
+    return false
+  }
 }

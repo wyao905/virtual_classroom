@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login students={this.props.state.students} instructors={this.props.state.instructors}/>
+        <Login/>
       </div>
     );
   }

@@ -26,7 +26,7 @@ class Login extends Component {
 
     render() {
         return(
-            <form>
+            <form onSubmit={event => this.handleSubmit(event)}>
                 <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
                 <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
                 <Select
