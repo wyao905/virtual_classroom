@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
     lectures: lecturesReducer,
     messages: messagesReducer,
     subjects: subjectsReducer,
+    currentUser: currentUserReducer,
     loading: loadingReducer
 })
 
@@ -106,6 +107,17 @@ function subjectsReducer(state = [], action) {
       default:
         return state;
     }
+}
+
+function currentUserReducer(state = {}, action) {
+  switch(action.type) {
+    case "LOGIN":
+      return action.user
+    case "LOGOUT":
+      return {}
+    default:
+      return state
+  }
 }
 
 function loadingReducer(state = false, action) {
