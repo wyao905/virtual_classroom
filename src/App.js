@@ -2,6 +2,7 @@ import './App.css'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {initialFetch} from './actions/fetchActions'
+import Login from './components/login'
 
 class App extends Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Login Component
+        <Login/>
       </div>
     );
   }
