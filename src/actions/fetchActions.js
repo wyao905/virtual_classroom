@@ -1,5 +1,5 @@
 export const initialFetch = () => {
-    return (dispatch) => {
+    return(dispatch) => {
         dispatch({type: 'LOADING_INITIAL'})
         fetch('http://localhost:3001/instructors')
             .then(response => {return response.json()})
@@ -12,5 +12,12 @@ export const initialFetch = () => {
                         dispatch({type: 'ADD_STUDENTS', students: responseStudents.data})
                     })
             })
+    }
+}
+
+export const checkLogin = () => {
+    return(dispatch) => {
+        dispatch({type: 'LOADING'})
+        // need to add new custom route for login, then send new fetch request with user info passed in
     }
 }
