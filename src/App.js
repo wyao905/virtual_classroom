@@ -1,14 +1,32 @@
-import './App.css';
-import React, {Component} from 'react';
+import './App.css'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {initialFetch} from './actions/fetchActions'
 
-function App() {
-  return (
-    <div className="App">
-      dgffdg
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.initialFetch()
+  }
+
+  render() {
+    return (
+      <div className="App">
+        Login Component
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    initialFetch: () => dispatch(initialFetch())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
