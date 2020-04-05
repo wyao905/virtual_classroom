@@ -14,13 +14,16 @@ export default rootReducer
 function studentsReducer(state = [], action) {
     let idx;
     switch (action.type) {
+      case "ADD_STUDENTS":
+        return [action.students]
+
       case "ADD_STUDENT":
         return [...state, action.student];
-   
+
       case "REMOVE_STUDENT":
         idx = state.findIndex(student => student.id === action.id)
         return [...state.slice(0, idx), ...state.slice(idx + 1)];
-   
+
       default:
         return state;
     }
@@ -29,6 +32,9 @@ function studentsReducer(state = [], action) {
 function instructorsReducer(state = [], action) {
     let idx;
     switch (action.type) {
+      case "ADD_INSTRUCTORS":
+        return [action.instructors]
+
       case "ADD_INSTRUCTOR":
         return [...state, action.instructor];
    
