@@ -1,6 +1,6 @@
 class MessageSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :content, :date
+  attributes :content, :created_at
 
   belongs_to :instructor
   belongs_to :student
