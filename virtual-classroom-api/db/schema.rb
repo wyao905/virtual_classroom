@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_224031) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
+    t.string "sender"
     t.integer "instructor_id", null: false
     t.integer "student_id", null: false
     t.integer "lecture_id", null: false
