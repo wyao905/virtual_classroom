@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {initialFetch, checkLogin} from './actions/fetchActions'
 import Login from './components/login'
+import Body from './components/body'
 
 class App extends Component {
   componentDidMount() {
@@ -10,9 +11,11 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.state)
     return (
       <div className="App">
         <Login checkLogin={this.props.checkLogin}/>
+        <Body/>
       </div>
     );
   }

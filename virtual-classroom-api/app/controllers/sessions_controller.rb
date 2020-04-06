@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     def create
         if params[:userSelectOption] == "student"
             user = Student.find_by(email: params[:email])
-            options = {include: [:enrollments, :messages]}
+            options = {include: [:enrollments, :messages, :subjects]}
             serializer = StudentSerializer.new(user, options)
         elsif params[:userSelectOption] == "instructor"
             user = Instructor.find_by(email: params[:email])

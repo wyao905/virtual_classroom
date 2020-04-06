@@ -31,19 +31,13 @@ export const checkLogin = (user) => {
         fetch("http://localhost:3001/sessions", configObj)
             .then(response => {return response.json()})
             .then(verifiedUser => {
-                console.log(verifiedUser)
                 if(verifiedUser.error === undefined) {
                     dispatch({type: 'LOGIN', user: verifiedUser.data})
-                    if(verifiedUser.type === "student") {
-                        let enrollments = verifiedUser.included.filter(obj => obj.type === "enrollment")
-                        console.log(enrollments)
-                        // dispatch({type: 'ADD_ENROLLMENTS', enrollments: verifiedUser.included})
-                    } else {
-                        let subjects = verifiedUser.included.filter(obj => obj.type === "subject")
-                        console.log(subjects)
-                        // dispatch({type: 'ADD_ENROLLMENTS', enrollments: verifiedUser.included})
-                    }
+                    let subjects = verifiedUser.included.filter(obj => obj.type === "subject")
+                    dispatch({type: 'LOADING_DONE'})
+                    dispatch({type: 'ADD_SUBJECTS', subjects: subjects})
                 } else {
+                    dispatch({type: 'LOADING_DONE'})
                     console.log(verifiedUser.error)
                 }
             })
