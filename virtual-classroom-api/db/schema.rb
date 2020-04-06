@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_224031) do
 
   create_table "lectures", force: :cascade do |t|
     t.string "title"
-    t.string "date"
     t.string "content"
     t.integer "subject_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_224031) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.string "date"
     t.integer "instructor_id", null: false
     t.integer "student_id", null: false
     t.integer "lecture_id", null: false

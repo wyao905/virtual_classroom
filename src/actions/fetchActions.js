@@ -30,6 +30,7 @@ export const checkLogin = (user) => {
         fetch("http://localhost:3001/sessions", configObj)
             .then(response => {return response.json()})
             .then(verifiedUser => {
+                console.log(verifiedUser)
                 if(verifiedUser.error === undefined) {
                     dispatch({type: 'LOGIN', user: verifiedUser.data})
                 } else {
