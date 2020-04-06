@@ -125,6 +125,9 @@ function loadingReducer(state = false, action) {
     case "LOADING":
       return true
     
+    case "LOADING_DONE":
+      return false
+      
     default:
       return false
   }

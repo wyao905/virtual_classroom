@@ -8,6 +8,7 @@ export const initialFetch = () => {
                 fetch('http://localhost:3001/students')
                     .then(response => {return response.json()})
                     .then(responseStudents => {
+                        dispatch({type: 'LOADING_DONE'})
                         dispatch({type: 'ADD_INSTRUCTORS', instructors: instructorList})
                         dispatch({type: 'ADD_STUDENTS', students: responseStudents.data})
                     })
@@ -33,6 +34,15 @@ export const checkLogin = (user) => {
                 console.log(verifiedUser)
                 if(verifiedUser.error === undefined) {
                     dispatch({type: 'LOGIN', user: verifiedUser.data})
+                    if(verifiedUser.type === "student") {
+                        let enrollments = verifiedUser.included.filter(obj => obj.type === "enrollment")
+                        console.log(enrollments)
+                        // dispatch({type: 'ADD_ENROLLMENTS', enrollments: verifiedUser.included})
+                    } else {
+                        let subjects = verifiedUser.included.filter(obj => obj.type === "subject")
+                        console.log(subjects)
+                        // dispatch({type: 'ADD_ENROLLMENTS', enrollments: verifiedUser.included})
+                    }
                 } else {
                     console.log(verifiedUser.error)
                 }
