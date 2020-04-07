@@ -4,7 +4,6 @@ import SubjectsContainer from './subjects/subjectsContainer'
 
 class Body extends Component {
     render() {
-        console.log(this.props.state, this.props.state.currentUser)
         return(
             <div>
                 <SubjectsContainer subjects={this.props.subjects} user={this.props.currentUser}/>

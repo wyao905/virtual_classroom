@@ -98,7 +98,7 @@ function subjectsReducer(state = [], action) {
     let idx
     switch(action.type) {
       case "ADD_SUBJECTS":
-        return [action.subjects]
+        return [].concat(action.subjects)
 
       case "ADD_SUBJECT":
         return [...state, action.subject]

@@ -1,7 +1,6 @@
 class SubjectsController < ApplicationController
-    def index
-        subjects = Subject.all
-        options = {include: [:instructor, :enrollments, :lectures]}
-        render json: SubjectSerializer.new(subjects, options)
+    def show
+        subject = Subject.find_by(id: params[:id])
+        options = {include: []}
     end
 end

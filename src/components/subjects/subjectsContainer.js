@@ -1,21 +1,32 @@
 import React, {Component} from 'react'
-import Subject from './subjects'
+import {connect} from 'react-redux'
+import Subject from './subject'
+import {loadSubjectInfo} from '../../actions/fetchActions'
 
 class SubjectsContainer extends Component {
+    showSubjects = () => {
+        return this.props.subjects.map(sub => {
+            return <Subject id={sub.id} name={sub.attributes.name} handleClick={this.handleClick}/>
+        })
+    }
+
+    handleClick = (id) => {
+        this.props.loadSubjectInfo(id)
+    }
+
     render() {
-        console.log(this.props.state, this.props.state.currentUser)
         return(
             <div>
+                {this.showSubjects()}
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
+const mapDispatchToProps = dispatch => {
     return {
-        subjects: state.subjects,
-        currentUser: state.currentUser
+        loadSubjectInfo: (id) => dispatch(loadSubjectInfo(id))
     }
 }
-  
-export default SubjectsContainer
+
+export default connect(null, mapDispatchToProps)(SubjectsContainer)

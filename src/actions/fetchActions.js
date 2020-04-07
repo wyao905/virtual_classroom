@@ -43,3 +43,9 @@ export const checkLogin = (user) => {
             })
     }
 }
+
+export const loadSubjectInfo = (id) => {
+    return(dispatch) => {
+        fetch()
+    }
+}
