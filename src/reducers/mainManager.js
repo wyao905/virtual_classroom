@@ -150,6 +150,6 @@ function loadingReducer(state = false, action) {
       return false
 
     default:
-      return false
+      return state
   }
 }
