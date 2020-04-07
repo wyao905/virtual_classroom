@@ -49,7 +49,6 @@ export const loadSubjectInfo = (id) => {
         fetch(`http://localhost:3001/subjects/${id}`)
             .then(response => {return response.json()})
             .then(subject => {
-                // students and lectures for a subject will be obtained component side through props and matching ids
                 let lectures = subject.included.filter(lec => lec.type === "lecture")
                 lectures.forEach((lec) => {
                     dispatch({type: 'ADD_LECTURE', lecture: lec})
@@ -57,5 +56,11 @@ export const loadSubjectInfo = (id) => {
                 dispatch({type: 'SET_CURRENT_SUBJECT', subject: subject.data})
                 dispatch({type: 'LOADING_DONE'})
             })
+    }
+}
+
+export const loadLectureInfo = (id) => {
+    return(dispatch) => {
+        console.log(id)
     }
 }
