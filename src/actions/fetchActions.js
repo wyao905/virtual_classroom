@@ -50,14 +50,13 @@ export const loadSubjectInfo = (id) => {
         fetch(`http://localhost:3001/subjects/${id}`)
             .then(response => {return response.json()})
             .then(subject => {
-                dispatch({type: 'LOADING_DONE'})
-                // add lecture list to state (need to check lectures aren't added twice)
                 // students and lectures for a subject will be obtained component side through props and matching ids
                 let lectures = subject.included.filter(lec => lec.type === "lecture")
                 lectures.forEach((lec) => {
                     dispatch({type: 'ADD_LECTURE', lecture: lec})
                 })
-                console.log(subject)
+                dispatch({type: 'SET_CURRENT_SUBJECT', subject: subject.data})
+                dispatch({type: 'LOADING_DONE'})
             })
     }
 }
