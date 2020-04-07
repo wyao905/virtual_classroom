@@ -54,6 +54,9 @@ export const loadSubjectInfo = (id) => {
                 // add lecture list to state (need to check lectures aren't added twice)
                 // students and lectures for a subject will be obtained component side through props and matching ids
                 let lectures = subject.included.filter(lec => lec.type === "lecture")
+                lectures.forEach((lec) => {
+                    dispatch({type: 'ADD_LECTURE', lecture: lec})
+                })
                 console.log(subject)
             })
     }

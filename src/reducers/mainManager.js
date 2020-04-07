@@ -68,6 +68,11 @@ function lecturesReducer(state = [], action) {
     let idx
     switch(action.type) {
       case "ADD_LECTURE":
+        for(let i = 0; i < state.length; i++) {
+          if(state[i].id === action.lecture.id) {
+            return state
+          }
+        }
         return [...state, action.lecture]
    
       case "REMOVE_LECTURE":
