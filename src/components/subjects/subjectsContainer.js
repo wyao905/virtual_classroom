@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import SubjectsContainer from './subjects/subjectsContainer'
+import Subject from './subjects'
 
-class Body extends Component {
+class SubjectsContainer extends Component {
     render() {
         console.log(this.props.state, this.props.state.currentUser)
         return(
             <div>
-                <SubjectsContainer subjects={this.props.subjects} user={this.props.currentUser}/>
             </div>
         )
     }
@@ -20,4 +18,4 @@ const mapStateToProps = state => {
     }
 }
   
-export default connect(mapStateToProps)(Body)
+export default SubjectsContainer
