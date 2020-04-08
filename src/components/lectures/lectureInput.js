@@ -7,7 +7,7 @@ class LectureInput extends Component {
 
     lectureInput = () => {
         if(this.props.class === "in session") {
-            <form onSubmit={event => this.handleSubmit(event)}>
+            return <form onSubmit={event => this.handleSubmit(event)}>
                 {/* <input */}
                 <input type="submit" value="Send" />
             </form>
