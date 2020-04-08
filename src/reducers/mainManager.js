@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
     subjects: subjectsReducer,
     currentUser: currentUserReducer,
     currentSubject: currentSubjectReducer,
+    currentLecture: currentLectureReducer,
     loading: loadingReducer
 })
 
@@ -135,6 +136,16 @@ function currentSubjectReducer(state = {}, action) {
   switch(action.type) {
     case "SET_CURRENT_SUBJECT":
       return action.subject
+
+    default:
+      return state
+  }
+}
+
+function currentLectureReducer(state = "", action) {
+  switch(action.type) {
+    case "DISPLAY_LECTURE_CONTENT":
+      return action.id
 
     default:
       return state

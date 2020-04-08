@@ -1,32 +1,47 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Lecture from './lecture'
+import LectureButtons from './lectureButtons'
+import LectureContent from './lectureContent'
 import {loadLectureInfo} from '../../actions/fetchActions'
+import {displayLectureContent} from '../../actions/regularActions'
 
 class LecturesContainer extends Component {
-    showLectures = () => {
+    showLectureButtons = () => {
         return this.props.lectures.map(lec => {
             if(lec.relationships.subject.data.id === this.props.subject.id) {
-                return <Lecture
-                    id={lec.id}
-                    date={lec.attributes.created_at.split("T")[0]}
-                    title={lec.attributes.title}
-                    content={lec.attributes.content}
-                    handleClick={this.handleClick}/>
+                return <LectureButtons
+                id={lec.id}
+                date={lec.attributes.created_at.split("T")[0]}
+                title={lec.attributes.title}
+                handleClick={this.handleClick}/>
             } else {
                 return null
             }
         })
     }
 
-    // handleClick = (id) => {
-    //     this.props.loadSubjectInfo(id)
-    // }
+    showLectureContent = () => {
+        return this.props.lectures.map(lec => {
+            if(this.props.currentLecture === lec.id) {
+                return <LectureContent
+                date={lec.attributes.created_at.split("T")[0]}
+                title={lec.attributes.title}
+                content={lec.attributes.content}/>
+            } else {
+                return null
+            }
+        })
+    }
+
+    handleClick = (id) => {
+        this.props.displayLectureContent(id)
+    }
 
     render() {
         return(
             <div>
-                {this.showLectures()}
+                {this.showLectureButtons()}
+                {this.showLectureContent()}
             </div>
         )
     }
@@ -34,7 +49,7 @@ class LecturesContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadLectureInfo: (id) => dispatch(loadLectureInfo(id))
+        displayLectureContent: (id) => dispatch(displayLectureContent(id))
     }
 }
 

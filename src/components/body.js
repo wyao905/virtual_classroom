@@ -8,9 +8,16 @@ class Body extends Component {
     render() {
         return(
             <div>
-                <SubjectsContainer subjects={this.props.subjects} user={this.props.currentUser}/>
-                <LecturesContainer lectures={this.props.lectures} subject={this.props.currentSubject}/>
-                <StudentsContainer students={this.props.students} subject={this.props.currentSubject}/>
+                <SubjectsContainer
+                    subjects={this.props.subjects}
+                    user={this.props.currentUser}/>
+                <LecturesContainer
+                    lectures={this.props.lectures}
+                    currentLecture={this.props.currentLecture}
+                    subject={this.props.currentSubject}/>
+                <StudentsContainer
+                    students={this.props.students}
+                    subject={this.props.currentSubject}/>
             </div>
         )
     }
@@ -22,7 +29,8 @@ const mapStateToProps = state => {
         lectures: state.lectures,
         students: state.students,
         currentUser: state.currentUser,
-        currentSubject: state.currentSubject
+        currentSubject: state.currentSubject,
+        currentLecture: state.currentLecture
     }
 }
   
