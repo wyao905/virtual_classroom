@@ -146,6 +146,9 @@ function currentLectureReducer(state = "", action) {
   switch(action.type) {
     case "DISPLAY_LECTURE_CONTENT":
       return action.id
+    
+    case "CLEAR_LECTURE_CONTENT":
+      return action.id
 
     default:
       return state

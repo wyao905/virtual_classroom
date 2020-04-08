@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Subject from './subject'
 import {loadSubjectInfo} from '../../actions/fetchActions'
+import {clearLectureContent} from '../../actions/regularActions'
 
 class SubjectsContainer extends Component {
     showSubjects = () => {
@@ -15,6 +16,7 @@ class SubjectsContainer extends Component {
 
     handleClick = (id) => {
         this.props.loadSubjectInfo(id)
+        this.props.clearLectureContent()
     }
 
     render() {
@@ -28,7 +30,8 @@ class SubjectsContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadSubjectInfo: (id) => dispatch(loadSubjectInfo(id))
+        loadSubjectInfo: (id) => dispatch(loadSubjectInfo(id)),
+        clearLectureContent: () => dispatch(clearLectureContent())
     }
 }
 
