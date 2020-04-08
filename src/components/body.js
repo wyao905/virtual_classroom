@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import SubjectsContainer from './subjects/subjectsContainer'
 import LecturesContainer from './lectures/lecturesContainer'
+import StudentsContainer from './students/studentsContainer'
 
 class Body extends Component {
     render() {
@@ -9,6 +10,7 @@ class Body extends Component {
             <div>
                 <SubjectsContainer subjects={this.props.subjects} user={this.props.currentUser}/>
                 <LecturesContainer lectures={this.props.lectures} subject={this.props.currentSubject}/>
+                <StudentsContainer students={this.props.students} subject={this.props.currentSubject}/>
             </div>
         )
     }
@@ -18,6 +20,7 @@ const mapStateToProps = state => {
     return {
         subjects: state.subjects,
         lectures: state.lectures,
+        students: state.students,
         currentUser: state.currentUser,
         currentSubject: state.currentSubject
     }

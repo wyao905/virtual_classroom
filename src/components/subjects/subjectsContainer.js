@@ -6,7 +6,10 @@ import {loadSubjectInfo} from '../../actions/fetchActions'
 class SubjectsContainer extends Component {
     showSubjects = () => {
         return this.props.subjects.map(sub => {
-            return <Subject id={sub.id} name={sub.attributes.name} handleClick={this.handleClick}/>
+            return <Subject
+                id={sub.id}
+                name={sub.attributes.name}
+                handleClick={this.handleClick}/>
         })
     }
 
