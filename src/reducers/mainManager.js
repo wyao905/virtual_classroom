@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
     currentUser: currentUserReducer,
     currentSubject: currentSubjectReducer,
     currentLecture: currentLectureReducer,
-    classSession: classSession,
-    classLecture: classLecture,
+    classSession: classSessionReducer,
+    classLecture: classLectureReducer,
     loading: loadingReducer
 })
 
@@ -157,7 +157,7 @@ function currentLectureReducer(state = "", action) {
   }
 }
 
-function classSession(state = false, action) {
+function classSessionReducer(state = false, action) {
   switch(action.type) {
     case "START":
       return true
@@ -170,7 +170,7 @@ function classSession(state = false, action) {
   }
 }
 
-function classLecture(state = "", action) {
+function classLectureReducer(state = "", action) {
   switch(action.type) {
     case "START":
       return action.id

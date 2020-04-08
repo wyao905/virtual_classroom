@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
 import LectureContent from './lectureContent'
 import LectureInput from './lectureInput'
-import {addLecture} from '../../actions/fetchActions'
 import {displayLectureContent} from '../../actions/regularActions'
 
 class LecturesContainer extends Component {
@@ -36,8 +35,8 @@ class LecturesContainer extends Component {
 
     showLectureInput = () => {
         console.log(this.props.currentUser)
-        if(this.props.currentUser.type === "instructor") {
-            return <LectureInput addLecture={this.props.addLecture}/>
+        if(this.props.currentUser.type === "instructor" && this.props.subject.id !== undefined) {
+            return <LectureInput/>
         } else {
             return null
         }
@@ -60,8 +59,7 @@ class LecturesContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        displayLectureContent: (id) => dispatch(displayLectureContent(id)),
-        addLecture: (lecture) => dispatch(addLecture(lecture))
+        displayLectureContent: (id) => dispatch(displayLectureContent(id))
     }
 }
 
