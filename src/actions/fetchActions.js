@@ -59,8 +59,22 @@ export const loadSubjectInfo = (id) => {
     }
 }
 
-export const loadLectureInfo = (id) => {
+export const addLecture = (lecture) => {
     return(dispatch) => {
-        console.log(id)
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(lecture)
+        }
+
+        dispatch({type: 'LOADING'})
+        fetch("http://localhost:3001/lectures", configObj)
+            .then(response => {return response.json()})
+            .then(newLecture => {
+                console.log(newLecture)
+            })
     }
 }
