@@ -33,6 +33,10 @@ class LecturesContainer extends Component {
         })
     }
 
+    showLectureInput = () => {
+        
+    }
+
     handleClick = (id) => {
         this.props.displayLectureContent(id)
     }
@@ -42,6 +46,7 @@ class LecturesContainer extends Component {
             <div>
                 {this.showLectureButtons()}
                 {this.showLectureContent()}
+                {this.showLectureInput()}
             </div>
         )
     }

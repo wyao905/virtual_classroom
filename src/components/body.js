@@ -13,6 +13,7 @@ class Body extends Component {
                     user={this.props.currentUser}/>
                 <LecturesContainer
                     lectures={this.props.lectures}
+                    currentUser={this.props.currentUser}
                     currentLecture={this.props.currentLecture}
                     subject={this.props.currentSubject}/>
                 <StudentsContainer
