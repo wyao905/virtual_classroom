@@ -43,7 +43,7 @@ class LecturesContainer extends Component {
         }
     }
 
-    handleClick = (id) => {
+    handleClick = id => {
         this.props.displayLectureContent(id)
     }
 

@@ -5,6 +5,25 @@ class LectureInput extends Component {
         content: ""
     }
 
+    lectureInput = () => {
+        if(this.props.class === "in session") {
+            <form onSubmit={event => this.handleSubmit(event)}>
+                {/* <input */}
+                <input type="submit" value="Send" />
+            </form>
+        } else {
+            return null
+        }
+    }
+
+    classSessionButtons = () => {
+        if(this.props.classSession) {
+            return <button>End</button>
+        } else {
+            return <button>Start</button>
+        }
+    }
+
     handleChange = event => {
         this.setState({
             content: event.target.value
@@ -22,14 +41,18 @@ class LectureInput extends Component {
         })
     }
 
+    handleStartClass = id => {
+
+    }
+
     render() {
         return(
-            <form onSubmit={event => this.handleSubmit(event)}>
-                {/* <input */}
-                <input type="submit" value="Submit" />
-            </form>
+            <div>
+                {this.lectureInput()}
+                {this.classSessionButtons()}
+            </div>
         )
     }
 }
 
-export default Login
+export default LectureInput

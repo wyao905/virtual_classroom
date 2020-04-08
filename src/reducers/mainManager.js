@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
     currentUser: currentUserReducer,
     currentSubject: currentSubjectReducer,
     currentLecture: currentLectureReducer,
+    classSession: classSession,
     loading: loadingReducer
 })
 
@@ -30,7 +31,7 @@ function studentsReducer(state = [], action) {
 
     default:
       return state
-}
+  }
 }
 
 function instructorsReducer(state = [], action) {
@@ -149,6 +150,19 @@ function currentLectureReducer(state = "", action) {
     
     case "CLEAR_LECTURE_CONTENT":
       return action.id
+
+    default:
+      return state
+  }
+}
+
+function classSession(state = false, action) {
+  switch(action.type) {
+    case "START":
+      return true
+
+    case "END":
+      return false
 
     default:
       return state
