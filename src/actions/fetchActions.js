@@ -75,6 +75,8 @@ export const addLecture = (lecture) => {
             .then(response => {return response.json()})
             .then(newLecture => {
                 console.log(newLecture)
+                dispatch({type: 'START', id: newLecture.id})
+                dispatch({type: 'LOADING_DONE'})
             })
     }
 }

@@ -34,7 +34,6 @@ class LecturesContainer extends Component {
     }
 
     showLectureInput = () => {
-        console.log(this.props.currentUser)
         if(this.props.currentUser.type === "instructor" && this.props.subject.id !== undefined) {
             return <LectureInput/>
         } else {

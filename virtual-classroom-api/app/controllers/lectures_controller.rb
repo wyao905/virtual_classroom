@@ -6,6 +6,10 @@ class LecturesController < ApplicationController
     end
 
     def create
-        binding.pry
+        subject = Subject.find(params[:subject_id])
+        lecture = subject.lectures.build(title: params[:title], content: params[:content])
+        lecture.save
+        options = {include: [:subject]}
+        render json: LectureSerializer.new(lecture, options)
     end
 end
