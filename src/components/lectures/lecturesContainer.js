@@ -4,7 +4,6 @@ import LectureButtons from './lectureButtons'
 import LectureContent from './lectureContent'
 import LectureContentHead from './lectureContentHead'
 import ClassLectureContentHead from './classLectureContentHead'
-// import ClassLectureContent from './classLectureContent'
 import LectureInput from './lectureInput'
 import {displayLectureContent} from '../../actions/regularActions'
 
