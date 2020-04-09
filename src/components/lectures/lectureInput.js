@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {addLecture, updateClassLecture} from '../../actions/fetchActions'
+import {endClass} from '../../actions/regularActions'
 
 
 class LectureInput extends Component {
     state = {
         title: "",
         content: "",
-        subject_id: this.props.currentSubject.id
+        subject_id: ""
     }
 
     lectureInput = () => {
@@ -57,11 +58,21 @@ class LectureInput extends Component {
     }
 
     handleStartClass = () => {
-        this.props.addLecture(this.state)
+        let newLecture = this.state
+        newLecture.subject_id = this.props.currentSubject.id
+        this.props.addLecture(newLecture)
+        this.setState({
+            subject_id: this.props.currentSubject.id
+        })
     }
 
     handleEndClass = id => {
-
+        this.props.endClass()
+        this.setState({
+            title: "",
+            content: "",
+            subject_id: ""
+        })
     }
 
     render() {
@@ -85,7 +96,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addLecture: (lecture) => dispatch(addLecture(lecture)),
-        updateClassLecture: (updatedLectureInfo, classLectureId) => dispatch(updateClassLecture(updatedLectureInfo, classLectureId))
+        updateClassLecture: (updatedLectureInfo, classLectureId) => dispatch(updateClassLecture(updatedLectureInfo, classLectureId)),
+        endClass: () => dispatch(endClass())
     }
 }
 
