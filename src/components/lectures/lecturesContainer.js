@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
 import LectureContent from './lectureContent'
+import ClassLectureContent from './classLectureContent'
 import LectureInput from './lectureInput'
 import {displayLectureContent} from '../../actions/regularActions'
 
@@ -33,6 +34,17 @@ class LecturesContainer extends Component {
         })
     }
 
+    showClassLectureContent = () => {
+        if(this.props.classSession) {
+            return <ClassLectureContent
+                date={this.props.classLecture.attributes.created_at.split("T")[0]}
+                title={this.props.classLecture.attributes.title}
+                content={this.props.classLecture.attributes.content}/>
+        } else {
+            return null
+        }
+    }
+
     showLectureInput = () => {
         if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
             return <LectureInput/>
@@ -50,6 +62,7 @@ class LecturesContainer extends Component {
             <div>
                 {this.showLectureButtons()}
                 {this.showLectureContent()}
+                {this.showClassLectureContent()}
                 {this.showLectureInput()}
             </div>
         )
@@ -61,7 +74,9 @@ const mapStateToProps = state => {
         lectures: state.lectures,
         currentUser: state.currentUser,
         currentSubject: state.currentSubject,
-        currentLecture: state.currentLecture
+        currentLecture: state.currentLecture,
+        classSession: state.classSession,
+        classLecture: state.classLecture
     }
 }
 
