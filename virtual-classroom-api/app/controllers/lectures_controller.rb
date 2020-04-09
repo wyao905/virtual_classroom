@@ -12,4 +12,15 @@ class LecturesController < ApplicationController
         options = {include: [:subject]}
         render json: LectureSerializer.new(lecture, options)
     end
+
+    def update
+        lecture = Lecture.find(params[:id])
+        if lecture.title == ""
+            lecture.update(title: params[:title])
+        else
+            new_content = lecture.content + "\n\n#{params[:content]}"
+            lecture.update(content: new_content)
+        end
+        render json: LectureSerializer.new(lecture)
+    end
 end

@@ -4,7 +4,7 @@ function ClassLectureContent(props) {
     return <div>
         <h3>{props.title}</h3>
         {`Date: ${props.date}`}
-        <p>{props.content}</p>
+        <p id="class-lecture-content">{props.content}</p>
     </div>
 }
 
