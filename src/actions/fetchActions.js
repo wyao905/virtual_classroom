@@ -79,3 +79,24 @@ export const addLecture = (lecture) => {
             })
     }
 }
+
+export const updateClassLecture = (lectureInfo, id) => {
+    return(dispatch) => {
+        let configObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(lectureInfo)
+        }
+
+        dispatch({type: 'LOADING'})
+        fetch(`http://localhost:3001/lectures/${id}`, configObj)
+            .then(response => {return response.json()})
+            .then(updatedLecture => {
+                dispatch({type: 'START', lecture: updatedLecture.data})
+                dispatch({type: 'LOADING_DONE'})
+            })
+    }
+}

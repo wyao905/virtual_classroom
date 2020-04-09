@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addLecture} from '../../actions/fetchActions'
+import {addLecture, updateClassLecture} from '../../actions/fetchActions'
 
 
 class LectureInput extends Component {
@@ -23,7 +23,7 @@ class LectureInput extends Component {
             } else {
                 return <form onSubmit={event => this.handleSubmit(event)}>
                     <textarea name="content"
-                              value={this.state.title}
+                              value={this.state.content}
                               onChange={event => this.handleChange(event)}/>
                     <input type="submit" value="Send" />
                 </form>
@@ -49,7 +49,7 @@ class LectureInput extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.props.addLecture(this.state)
+        this.props.updateClassLecture(this.state, this.props.classLecture.id)
         this.setState({
             title: "",
             content: ""
@@ -84,7 +84,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addLecture: (lecture) => dispatch(addLecture(lecture))
+        addLecture: (lecture) => dispatch(addLecture(lecture)),
+        updateClassLecture: (updatedLectureInfo, classLectureId) => dispatch(updateClassLecture(updatedLectureInfo, classLectureId))
     }
 }
 
