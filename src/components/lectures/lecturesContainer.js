@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
 import LectureContent from './lectureContent'
 import LectureContentHead from './lectureContentHead'
-import ClassLectureContentHead from './classLectureContentHead'
 import LectureInput from './lectureInput'
 import {displayLectureContent} from '../../actions/regularActions'
 
@@ -40,7 +39,7 @@ class LecturesContainer extends Component {
     showClassLectureContent = () => {
         if(this.props.classSession) {
             return <div>
-                <ClassLectureContentHead
+                <LectureContentHead
                     date={this.props.classLecture.attributes.created_at.split("T")[0]}
                     title={this.props.classLecture.attributes.title}/>
                 {this.contentBody(this.props.classLecture.attributes.content)}
