@@ -18,7 +18,7 @@ class LecturesController < ApplicationController
         if lecture.title == ""
             lecture.update(title: params[:title])
         else
-            new_content = lecture.content + "\n\n#{params[:content]}"
+            new_content = lecture.content + "\n#{params[:content]}"
             lecture.update(content: new_content)
         end
         render json: LectureSerializer.new(lecture)

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
 import LectureContent from './lectureContent'
+import ClassLectureContentHead from './classLectureContentHead'
 import ClassLectureContent from './classLectureContent'
 import LectureInput from './lectureInput'
 import {displayLectureContent} from '../../actions/regularActions'
@@ -11,10 +12,10 @@ class LecturesContainer extends Component {
         return this.props.lectures.map(lec => {
             if(lec.relationships.subject.data.id === this.props.currentSubject.id) {
                 return <LectureButtons
-                id={lec.id}
-                date={lec.attributes.created_at.split("T")[0]}
-                title={lec.attributes.title}
-                handleClick={this.handleClick}/>
+                    id={lec.id}
+                    date={lec.attributes.created_at.split("T")[0]}
+                    title={lec.attributes.title}
+                    handleClick={this.handleClick}/>
             } else {
                 return null
             }
@@ -25,9 +26,9 @@ class LecturesContainer extends Component {
         return this.props.lectures.map(lec => {
             if(this.props.currentLecture === lec.id) {
                 return <LectureContent
-                date={lec.attributes.created_at.split("T")[0]}
-                title={lec.attributes.title}
-                content={lec.attributes.content}/>
+                    date={lec.attributes.created_at.split("T")[0]}
+                    title={lec.attributes.title}
+                    content={lec.attributes.content}/>
             } else {
                 return null
             }
@@ -36,10 +37,22 @@ class LecturesContainer extends Component {
 
     showClassLectureContent = () => {
         if(this.props.classSession) {
-            return <ClassLectureContent
-                date={this.props.classLecture.attributes.created_at.split("T")[0]}
-                title={this.props.classLecture.attributes.title}
-                content={this.props.classLecture.attributes.content}/>
+            return <div>
+                <ClassLectureContentHead
+                    date={this.props.classLecture.attributes.created_at.split("T")[0]}
+                    title={this.props.classLecture.attributes.title}/>
+                {this.contentBody()}
+                </div>
+        } else {
+            return null
+        }
+    }
+
+    contentBody = () => {
+        if(Array.isArray(this.props.classLecture.attributes.content)) {
+            return this.props.classLecture.attributes.content.map(content => {
+                return <ClassLectureContent content={content}/>
+            })
         } else {
             return null
         }

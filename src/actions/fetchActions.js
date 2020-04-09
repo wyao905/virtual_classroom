@@ -95,7 +95,8 @@ export const updateClassLecture = (lectureInfo, id) => {
         fetch(`http://localhost:3001/lectures/${id}`, configObj)
             .then(response => {return response.json()})
             .then(updatedLecture => {
-                // need to fix newline in html
+                let updatedContent = updatedLecture.data.attributes.content.split("\n")
+                updatedLecture.data.attributes.content = updatedContent
                 dispatch({type: 'START', lecture: updatedLecture.data})
                 dispatch({type: 'LOADING_DONE'})
             })
