@@ -7,8 +7,8 @@ import {endClass} from '../../actions/regularActions'
 class LectureInput extends Component {
     state = {
         title: "",
-        content: "",
-        subject_id: ""
+        content: ""
+        // subject_id: ""
     }
 
     lectureInput = () => {
