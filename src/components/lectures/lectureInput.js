@@ -8,7 +8,6 @@ class LectureInput extends Component {
     state = {
         title: "",
         content: ""
-        // subject_id: ""
     }
 
     lectureInput = () => {
