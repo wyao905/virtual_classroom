@@ -170,13 +170,13 @@ function classSessionReducer(state = false, action) {
   }
 }
 
-function classLectureReducer(state = "", action) {
+function classLectureReducer(state = {}, action) {
   switch(action.type) {
     case "START":
-      return action.id
+      return action.lecture
 
     case "END":
-      return ""
+      return {}
 
     default:
       return state

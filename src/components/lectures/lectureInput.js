@@ -11,11 +11,23 @@ class LectureInput extends Component {
     }
 
     lectureInput = () => {
-        if(this.props.class === "in session") {
-            return <form onSubmit={event => this.handleSubmit(event)}>
-                {/* need input for text for title and text area for content */}
-                <input type="submit" value="Send" />
-            </form>
+        if(this.props.classSession) {
+            if(this.props.classLecture.attributes.title === "") {
+                return <form onSubmit={event => this.handleSubmit(event)}>
+                    <input name="title"
+                           type="text"
+                           value={this.state.title}
+                           onChange={event => this.handleChange(event)}/>
+                    <input type="submit" value="Send" />
+                </form>
+            } else {
+                return <form onSubmit={event => this.handleSubmit(event)}>
+                    <textarea name="content"
+                              value={this.state.title}
+                              onChange={event => this.handleChange(event)}/>
+                    <input type="submit" value="Send" />
+                </form>
+            }
         } else {
             return null
         }

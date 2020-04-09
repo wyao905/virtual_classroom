@@ -8,7 +8,7 @@ import {displayLectureContent} from '../../actions/regularActions'
 class LecturesContainer extends Component {
     showLectureButtons = () => {
         return this.props.lectures.map(lec => {
-            if(lec.relationships.subject.data.id === this.props.subject.id) {
+            if(lec.relationships.subject.data.id === this.props.currentSubject.id) {
                 return <LectureButtons
                 id={lec.id}
                 date={lec.attributes.created_at.split("T")[0]}
@@ -34,7 +34,7 @@ class LecturesContainer extends Component {
     }
 
     showLectureInput = () => {
-        if(this.props.currentUser.type === "instructor" && this.props.subject.id !== undefined) {
+        if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
             return <LectureInput/>
         } else {
             return null
@@ -56,10 +56,19 @@ class LecturesContainer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        lectures: state.lectures,
+        currentUser: state.currentUser,
+        currentSubject: state.currentSubject,
+        currentLecture: state.currentLecture
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         displayLectureContent: (id) => dispatch(displayLectureContent(id))
     }
 }
 
-export default connect(null, mapDispatchToProps)(LecturesContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(LecturesContainer)

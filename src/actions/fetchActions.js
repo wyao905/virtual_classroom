@@ -74,8 +74,7 @@ export const addLecture = (lecture) => {
         fetch("http://localhost:3001/lectures", configObj)
             .then(response => {return response.json()})
             .then(newLecture => {
-                console.log(newLecture)
-                dispatch({type: 'START', id: newLecture.id})
+                dispatch({type: 'START', lecture: newLecture.data})
                 dispatch({type: 'LOADING_DONE'})
             })
     }
