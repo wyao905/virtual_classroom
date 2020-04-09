@@ -51,6 +51,8 @@ export const loadSubjectInfo = (id) => {
             .then(subject => {
                 let lectures = subject.included.filter(lec => lec.type === "lecture")
                 lectures.forEach((lec) => {
+                    let updatedContent = lec.attributes.content.split("\n")
+                    lec.attributes.content = updatedContent
                     dispatch({type: 'ADD_LECTURE', lecture: lec})
                 })
                 dispatch({type: 'SET_CURRENT_SUBJECT', subject: subject.data})

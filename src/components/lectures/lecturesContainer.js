@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
 import LectureContent from './lectureContent'
+import LectureContentHead from './lectureContentHead'
 import ClassLectureContentHead from './classLectureContentHead'
-import ClassLectureContent from './classLectureContent'
+// import ClassLectureContent from './classLectureContent'
 import LectureInput from './lectureInput'
 import {displayLectureContent} from '../../actions/regularActions'
 
@@ -25,10 +26,12 @@ class LecturesContainer extends Component {
     showLectureContent = () => {
         return this.props.lectures.map(lec => {
             if(this.props.currentLecture === lec.id) {
-                return <LectureContent
-                    date={lec.attributes.created_at.split("T")[0]}
-                    title={lec.attributes.title}
-                    content={lec.attributes.content}/>
+                return <div>
+                    <LectureContentHead
+                        date={lec.attributes.created_at.split("T")[0]}
+                        title={lec.attributes.title}/>
+                    {this.contentBody(lec.attributes.content)}
+                    </div>
             } else {
                 return null
             }
@@ -41,17 +44,17 @@ class LecturesContainer extends Component {
                 <ClassLectureContentHead
                     date={this.props.classLecture.attributes.created_at.split("T")[0]}
                     title={this.props.classLecture.attributes.title}/>
-                {this.contentBody()}
+                {this.contentBody(this.props.classLecture.attributes.content)}
                 </div>
         } else {
             return null
         }
     }
 
-    contentBody = () => {
-        if(Array.isArray(this.props.classLecture.attributes.content)) {
-            return this.props.classLecture.attributes.content.map(content => {
-                return <ClassLectureContent content={content}/>
+    contentBody = (lectureContent) => {
+        if(Array.isArray(lectureContent)) {
+            return lectureContent.map(content => {
+                return <LectureContent content={content}/>
             })
         } else {
             return null
