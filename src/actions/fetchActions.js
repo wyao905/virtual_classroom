@@ -76,7 +76,7 @@ export const addLecture = (lecture) => {
         fetch("http://localhost:3001/lectures", configObj)
             .then(response => {return response.json()})
             .then(newLecture => {
-                dispatch({type: 'START', lecture: newLecture.data})
+                dispatch({type: 'START_CLASS', lecture: newLecture.data})
                 dispatch({type: 'LOADING_DONE'})
             })
     }
@@ -99,7 +99,7 @@ export const updateClassLecture = (lectureInfo, id) => {
             .then(updatedLecture => {
                 let updatedContent = updatedLecture.data.attributes.content.split("\n")
                 updatedLecture.data.attributes.content = updatedContent
-                dispatch({type: 'START', lecture: updatedLecture.data})
+                dispatch({type: 'START_CLASS', lecture: updatedLecture.data})
                 dispatch({type: 'LOADING_DONE'})
             })
     }

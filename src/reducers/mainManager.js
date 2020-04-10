@@ -159,10 +159,10 @@ function currentLectureReducer(state = "", action) {
 
 function classSessionReducer(state = false, action) {
   switch(action.type) {
-    case "START":
+    case "START_CLASS":
       return true
 
-    case "END":
+    case "END_CLASS":
       return false
 
     default:
@@ -172,10 +172,10 @@ function classSessionReducer(state = false, action) {
 
 function classLectureReducer(state = {}, action) {
   switch(action.type) {
-    case "START":
+    case "START_CLASS":
       return action.lecture
 
-    case "END":
+    case "END_CLASS":
       return {}
 
     default:

@@ -14,7 +14,7 @@ export const clearLectureContent = () => {
 
 export const endClass = () => {
     return {
-        type: 'END'
+        type: 'END_CLASS'
     }
 }
 

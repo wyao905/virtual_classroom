@@ -10,15 +10,11 @@ class StudentsContainer extends Component {
                 return <Student
                     id={stu.id}
                     name={stu.attributes.name}
-                    handleClick={this.handleClick}/>
+                    email={stu.attributes.email}/>
             } else {
                 return null
             }
         })
-    }
-
-    handleClick = (id) => {
-        console.log(id)
     }
 
     render() {

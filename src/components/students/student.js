@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Student(props) {
-    return <button id={props.id} onClick={() => props.handleClick(props.id)}>{props.name}</button>;
+    return <div className="student-cards" id={props.id}>{props.name}<br/>{props.email}</div>;
 }
 
 export default Student
