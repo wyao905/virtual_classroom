@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
     currentLecture: currentLectureReducer,
     classSession: classSessionReducer,
     classLecture: classLectureReducer,
+    messagedUser: messagedUserReducer,
     loading: loadingReducer
 })
 
@@ -177,6 +178,16 @@ function classLectureReducer(state = {}, action) {
 
     case "END_CLASS":
       return {}
+
+    default:
+      return state
+  }
+}
+
+function messagedUserReducer(state = "", action) {
+  switch(action.type) {
+    case "SET_MESSAGED_USER":
+      return action.id
 
     default:
       return state

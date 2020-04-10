@@ -18,9 +18,9 @@ export const endClass = () => {
     }
 }
 
-// export const addAuthor = author => {
-//     return {
-//         type: 'ADD_AUTHOR',
-//         author
-//     }
-// }
+export const setMessagedUser = id => {
+    return {
+        type: 'SET_MESSAGED_USER',
+        id: id
+    }
+}

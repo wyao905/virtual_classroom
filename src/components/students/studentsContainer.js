@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Student from './student'
+import {setMessagedUser} from '../../actions/regularActions'
 
 class StudentsContainer extends Component {
     showStudents = () => {
@@ -9,11 +11,18 @@ class StudentsContainer extends Component {
                 return <Student
                     id={stu.id}
                     name={stu.attributes.name}
-                    email={stu.attributes.email}/>
+                    email={stu.attributes.email}
+                    handleClick={this.handleClick}/>
             } else {
                 return null
             }
         })
+    }
+
+    handleClick = id => {
+        if(this.props.user.type === "instructor") {
+            this.props.setMessagedUser(id)
+        }
     }
 
     render() {
@@ -25,4 +34,10 @@ class StudentsContainer extends Component {
     }
 }
 
-export default StudentsContainer
+const mapDispatchToProps = dispatch => {
+    return {
+        setMessagedUser: (id) => dispatch(setMessagedUser(id))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(StudentsContainer)

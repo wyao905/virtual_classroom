@@ -34,7 +34,6 @@ export const checkLogin = (user) => {
                     dispatch({type: 'LOGIN', user: verifiedUser.data})
                     let subjects = verifiedUser.included.filter(obj => obj.type === "subject")
                     let messages = verifiedUser.included.filter(obj => obj.type === "message")
-                    console.log(messages, verifiedUser)
                     dispatch({type: 'ADD_SUBJECTS', subjects: subjects})
                     dispatch({type: 'ADD_MESSAGES', messages: messages})
                     dispatch({type: 'LOADING_DONE'})
