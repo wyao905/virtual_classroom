@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Student from './student'
-import {setMessagedUser} from '../../actions/regularActions'
+import {setMessagedTarget} from '../../actions/regularActions'
 import {loadMessages} from '../../actions/fetchActions'
 
 class StudentsContainer extends Component {
@@ -22,7 +22,7 @@ class StudentsContainer extends Component {
 
     handleClick = id => {
         if(this.props.user.type === "instructor") {
-            this.props.setMessagedUser(id)
+            this.props.setMessagedTarget(id)
             this.props.loadMessages("instructors", this.props.user.id)
         }
     }
@@ -38,7 +38,7 @@ class StudentsContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setMessagedUser: (id) => dispatch(setMessagedUser(id)),
+        setMessagedTarget: (id) => dispatch(setMessagedTarget(id)),
         loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId))
     }
 }

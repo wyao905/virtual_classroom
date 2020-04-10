@@ -18,9 +18,9 @@ export const endClass = () => {
     }
 }
 
-export const setMessagedUser = id => {
+export const setMessagedTarget = id => {
     return {
-        type: 'SET_MESSAGED_USER',
+        type: 'SET_MESSAGED_TARGET',
         id: id
     }
 }
