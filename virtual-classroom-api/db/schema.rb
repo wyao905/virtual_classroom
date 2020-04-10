@@ -43,11 +43,9 @@ ActiveRecord::Schema.define(version: 2020_03_31_224031) do
     t.string "sender"
     t.integer "instructor_id", null: false
     t.integer "student_id", null: false
-    t.integer "lecture_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["instructor_id"], name: "index_messages_on_instructor_id"
-    t.index ["lecture_id"], name: "index_messages_on_lecture_id"
     t.index ["student_id"], name: "index_messages_on_student_id"
   end
 
@@ -71,7 +69,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_224031) do
   add_foreign_key "enrollments", "subjects"
   add_foreign_key "lectures", "subjects"
   add_foreign_key "messages", "instructors"
-  add_foreign_key "messages", "lectures"
   add_foreign_key "messages", "students"
   add_foreign_key "subjects", "instructors"
 end

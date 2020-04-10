@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import SubjectsContainer from './subjects/subjectsContainer'
 import LecturesContainer from './lectures/lecturesContainer'
 import StudentsContainer from './students/studentsContainer'
+import MessagesContainer from './messages/messagesContainer'
 
 class Body extends Component {
     render() {
@@ -15,6 +16,8 @@ class Body extends Component {
                 <StudentsContainer
                     students={this.props.students}
                     subject={this.props.currentSubject}/>
+                <MessagesContainer
+                    user={this.props.currentUser}/>
             </div>
         )
     }

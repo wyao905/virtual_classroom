@@ -58,9 +58,9 @@ tra_lec_2 = Lecture.create(title: "Cats", content: "How to be a cat.", subject: 
 occ_lec_1 = Lecture.create(title: "Intro To Occlumency", content: "Clearing your mind.", subject: occlumency)
 
 # Messages
-msg_1 = Message.create(content: "My potion smells bad.", sender: "student", instructor: severus, student: ron, lecture: pot_lec_2)
-msg_a = Message.create(content: "You are hopeless.", sender: "instructor", instructor: severus, student: ron, lecture: pot_lec_2)
-msg_2 = Message.create(content: "I think I made a bad luck potion.", sender: "student", instructor: severus, student: ron, lecture: pot_lec_3)
-msg_3 = Message.create(content: "Professor, I turned my ears into dog ears.", sender: "student", instructor: minerva, student: harry, lecture: tra_lec_2)
-msg_b = Message.create(content: "Potter please pay attention next time.", sender: "instructor", instructor: minerva, student: harry, lecture: tra_lec_2)
-msg_4 = Message.create(content: "Look I'm a cat!", sender: "student", instructor: minerva, student: hermoine, lecture: tra_lec_2)
+msg_1 = Message.create(content: "My potion smells bad.", sender: "student", instructor: severus, student: ron)
+msg_a = Message.create(content: "You are hopeless.", sender: "instructor", instructor: severus, student: ron)
+msg_2 = Message.create(content: "I think I made a bad luck potion.", sender: "student", instructor: severus, student: ron)
+msg_3 = Message.create(content: "Professor, I turned my ears into dog ears.", sender: "student", instructor: minerva, student: harry)
+msg_b = Message.create(content: "Potter please pay attention next time.", sender: "instructor", instructor: minerva, student: harry)
+msg_4 = Message.create(content: "Look I'm a cat!", sender: "student", instructor: minerva, student: hermoine)

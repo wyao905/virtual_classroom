@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
 import Student from './student'
 
 class StudentsContainer extends Component {
@@ -26,7 +25,4 @@ class StudentsContainer extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-}
-
-export default connect(null, mapDispatchToProps)(StudentsContainer)
+export default StudentsContainer
