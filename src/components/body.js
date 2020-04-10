@@ -17,6 +17,8 @@ class Body extends Component {
                     subject={this.props.currentSubject}/>
                 <MessagesContainer
                     user={this.props.currentUser}
+                    students={this.props.students}
+                    instructors={this.props.instructors}
                     subject={this.props.currentSubject}
                     messages={this.props.messages}
                     messagedTarget={this.props.messagedTarget}/>
@@ -28,6 +30,7 @@ class Body extends Component {
 const mapStateToProps = state => {
     return {
         students: state.students,
+        instructors: state.instructors,
         messages: state.messages,
         currentUser: state.currentUser,
         currentSubject: state.currentSubject,
