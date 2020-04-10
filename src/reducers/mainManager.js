@@ -93,7 +93,18 @@ function messagesReducer(state = [], action) {
   let idx
   switch(action.type) {
     case "ADD_MESSAGES":
-      return [].concat(action.messages)
+      if(state.length > 0) {
+        let updatedState = [...state]
+        let currentMessageIds = updatedState.map(msg => msg.id)
+        for(let i = 0; i < action.messages.length; i++) {
+          if(!currentMessageIds.includes(action.messages[i].id)) {
+            updatedState.concat(action.messages[i])
+          }
+        }
+        return updatedState
+      } else {
+        return [...action.messages]
+      }      
    
     case "REMOVE_MESSAGE":
       idx = state.findIndex(message => message.id === action.id)

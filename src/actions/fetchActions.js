@@ -106,3 +106,13 @@ export const updateClassLecture = (lectureInfo, id) => {
             })
     }
 }
+
+export const loadMessages = (type, id) => {
+    return(dispatch) => {
+        fetch(`http://localhost:3001/${type}/${id}`)
+            .then(response => {return response.json()})
+            .then(studentInfo => {
+                dispatch({type: 'ADD_MESSAGES', messages: studentInfo.included})
+            })
+    }
+}

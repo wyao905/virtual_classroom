@@ -9,11 +9,10 @@ class Body extends Component {
     render() {
         return(
             <div>
-                <SubjectsContainer
-                    subjects={this.props.subjects}
-                    user={this.props.currentUser}/>
+                <SubjectsContainer/>
                 <LecturesContainer/>
                 <StudentsContainer
+                    user={this.props.currentUser}
                     students={this.props.students}
                     subject={this.props.currentSubject}/>
                 <MessagesContainer
@@ -28,7 +27,6 @@ class Body extends Component {
 
 const mapStateToProps = state => {
     return {
-        subjects: state.subjects,
         students: state.students,
         messages: state.messages,
         currentUser: state.currentUser,

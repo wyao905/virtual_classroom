@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Subject from './subject'
-import {loadSubjectInfo} from '../../actions/fetchActions'
-import {clearLectureContent} from '../../actions/regularActions'
+import {loadSubjectInfo, loadMessages} from '../../actions/fetchActions'
+import {clearLectureContent, setMessagedUser} from '../../actions/regularActions'
 
 class SubjectsContainer extends Component {
     showSubjects = () => {
@@ -17,6 +17,11 @@ class SubjectsContainer extends Component {
     handleClick = (id) => {
         this.props.loadSubjectInfo(id)
         this.props.clearLectureContent()
+        if(this.props.currentUser.type === "student") {
+            let selectedSubject = this.props.subjects.find(sub => sub.id === id)
+            this.props.setMessagedUser(selectedSubject.relationships.instructor.data.id)
+            this.props.loadMessages("students", this.props.currentUser.id)
+        }
     }
 
     render() {
@@ -27,12 +32,21 @@ class SubjectsContainer extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser,
+        currentSubject: state.currentSubject,
+        subjects: state.subjects
+    }
+}
 
 const mapDispatchToProps = dispatch => {
     return {
         loadSubjectInfo: (id) => dispatch(loadSubjectInfo(id)),
-        clearLectureContent: () => dispatch(clearLectureContent())
+        clearLectureContent: () => dispatch(clearLectureContent()),
+        setMessagedUser: (id) => dispatch(setMessagedUser(id)),
+        loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId))
     }
 }
 
-export default connect(null, mapDispatchToProps)(SubjectsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectsContainer)

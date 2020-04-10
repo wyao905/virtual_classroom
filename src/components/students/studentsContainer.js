@@ -23,7 +23,7 @@ class StudentsContainer extends Component {
     handleClick = id => {
         if(this.props.user.type === "instructor") {
             this.props.setMessagedUser(id)
-            this.props.loadMessagees(id)
+            this.props.loadMessages("instructors", this.props.user.id)
         }
     }
 
@@ -38,7 +38,8 @@ class StudentsContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setMessagedUser: (id) => dispatch(setMessagedUser(id))
+        setMessagedUser: (id) => dispatch(setMessagedUser(id)),
+        loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId))
     }
 }
 
