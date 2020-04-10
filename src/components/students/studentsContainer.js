@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Student from './student'
 import {setMessagedUser} from '../../actions/regularActions'
+import {loadMessages} from '../../actions/fetchActions'
 
 class StudentsContainer extends Component {
     showStudents = () => {
@@ -22,6 +23,7 @@ class StudentsContainer extends Component {
     handleClick = id => {
         if(this.props.user.type === "instructor") {
             this.props.setMessagedUser(id)
+            this.props.loadMessagees(id)
         }
     }
 

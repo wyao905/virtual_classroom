@@ -3,6 +3,7 @@ class CreateMessages < ActiveRecord::Migration[6.0]
     create_table :messages do |t|
       t.string :content
       t.string :sender
+      t.references :subject, null: false, foreign_key: true
       t.references :instructor, null: false, foreign_key: true
       t.references :student, null: false, foreign_key: true
 
