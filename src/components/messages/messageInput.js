@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Select from 'react-select'
 import {addMessage} from '../../actions/fetchActions'
 
 class MessageInput extends Component {
@@ -9,8 +8,21 @@ class MessageInput extends Component {
     }
 
     showForm = () => {
+        let target
+        let targetSub
+        if(this.props.currentUser.type === "student") {
+            targetSub = this.props.subjects.find(sub => sub.id === this.props.messagedTarget)
+            target = this.props.instructors.find(ins => ins.id === targetSub.relationships.instructor.data.id)
+        } else {
+            target = this.props.students.find(stu => stu.id === this.props.messagedTarget)
+            targetSub = this.props.currentSubject
+        }
         return <form onSubmit={event => this.handleSubmit(event)}>
-            <label>Sender: {}</label>
+            <div>
+                To: {target.attributes.name} <br/>
+                Email: {target.attributes.email} <br/>
+                Subject: {targetSub.attributes.name} <br/>
+            </div>
             <textarea name="content"
                       value={this.state.content}
                       onChange={event => this.handleChange(event)}/>
@@ -27,6 +39,16 @@ class MessageInput extends Component {
     handleSubmit = event => {
         event.preventDefault()
         let newMessage = this.state
+        if(this.props.currentUser.type === "student") {
+            newMessage.sender = "student"
+            newMessage.student = this.props.currentUser.id
+            newMessage.instructor = this.props.currentSubject.relationships.instructor.data.id
+        } else {
+            newMessage.sender = "instructor"
+            newMessage.student = this.props.messagedTarget
+            newMessage.instructor = this.props.currentUser.id
+        }
+        newMessage.subject = this.props.currentSubject.id
         this.props.addMessage(newMessage)
         this.setState({
             content: ""
@@ -44,7 +66,7 @@ const mapStateToProps = state => {
     return {
         students: state.students,
         instructors: state.instructors,
-        messages: state.messages,
+        subjects: state.subjects,
         currentUser: state.currentUser,
         currentSubject: state.currentSubject,
         messagedTarget: state.messagedTarget                

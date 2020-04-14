@@ -6,11 +6,13 @@ class MessagesController < ApplicationController
     end
 
     def create
-        binding.pry
-        subject = Subject.find(params[:subject_id])
-        lecture = subject.lectures.build(title: params[:title], content: params[:content])
-        lecture.save
-        options = {include: [:subject]}
-        render json: LectureSerializer.new(lecture, options)
+        subject = Subject.find(params[:subject])
+        message = subject.messages.build(content: params[:content],
+                                         sender: params[:sender],
+                                         student_id: params[:student],
+                                         instructor_id: params[:instructor])
+        message.save
+        options = {include: [:instructor, :student, :subject]}
+        render json: MessageSerializer.new(message, options)
     end
 end
