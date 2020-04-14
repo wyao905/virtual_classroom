@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import Message from './message'
+import MessageInput from './messageInput'
 
 class MessagesContainer extends Component {
-    showMessageInput = () => {
+    showMessage = () => {
         if(this.props.messagedTarget !== "") {
             if(this.props.user.type === "student") {
                 let displayMessages = this.props.messages.filter(msg => msg.relationships.subject.data.id === this.props.messagedTarget)
@@ -52,9 +53,18 @@ class MessagesContainer extends Component {
         }
     }
 
+    showMessageInput = () => {
+        if(this.props.messagedTarget !== "") {
+            return <MessageInput/>
+        } else {
+            return null
+        }        
+    }
+
     render() {
         return(
             <div>
+                {this.showMessage()}
                 {this.showMessageInput()}
             </div>
         )

@@ -104,7 +104,10 @@ function messagesReducer(state = [], action) {
         return updatedState
       } else {
         return [...action.messages]
-      }      
+      }
+    
+    case "ADD_MESSAGE":
+      return [...state, action.message]
    
     case "REMOVE_MESSAGE":
       idx = state.findIndex(message => message.id === action.id)

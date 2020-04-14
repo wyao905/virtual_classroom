@@ -107,6 +107,27 @@ export const updateClassLecture = (lectureInfo, id) => {
     }
 }
 
+export const addMessage = (message) => {
+    return(dispatch) => {
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(message)
+        }
+
+        dispatch({type: 'LOADING'})
+        fetch("http://localhost:3001/messages", configObj)
+            .then(response => {return response.json()})
+            .then(newMessage => {
+                dispatch({type: 'ADD_MESSAGE', message: newMessage.data})
+                dispatch({type: 'LOADING_DONE'})
+            })
+    }
+}
+
 export const loadMessages = (type, id) => {
     return(dispatch) => {
         fetch(`http://localhost:3001/${type}/${id}`)
