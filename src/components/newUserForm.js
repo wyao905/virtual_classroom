@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import Select from 'react-select'
 
-class Login extends Component {
+class NewUserForm extends Component {
     state = {
+        name: "",
         email: "",
         password: "",
         userSelectOption: null
@@ -22,8 +23,9 @@ class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.props.checkLogin(this.state)
+        this.props.signNewUser(this.state)
         this.setState({
+            name: "",
             email: "",
             password: "",
             userSelectOption: null
@@ -33,6 +35,7 @@ class Login extends Component {
     render() {
         return(
             <form onSubmit={event => this.handleSubmit(event)}>
+                <input name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>
                 <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
                 <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
                 <Select
@@ -42,10 +45,10 @@ class Login extends Component {
                         {value: 'student', label: 'Student'},
                         {value: 'instructor', label: 'Instructor'}
                 ]}/>
-                <input type="submit" value="Login" />
+                <input type="submit" value="Create" />
             </form>
         )
     }
 }
 
-export default Login
+export default NewUserForm

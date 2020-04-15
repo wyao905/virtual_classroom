@@ -45,6 +45,32 @@ export const checkLogin = (user) => {
     }
 }
 
+export const signNewUser = (user) => {
+    return(dispatch) => {
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(user)
+        }
+
+        dispatch({type: 'LOADING'})
+        fetch(`http://localhost:3001/${user.userSelectOption}s`, configObj)
+            .then(response => {return response.json()})
+            .then(newUser => {
+                if(newUser.error === undefined) {
+                    dispatch({type: 'LOGIN', user: newUser.data})
+                    dispatch({type: 'LOADING_DONE'})
+                } else {
+                    dispatch({type: 'LOADING_DONE'})
+                    console.log(newUser.error)
+                }
+            })
+    }
+}
+
 export const loadSubjectInfo = (id) => {
     return(dispatch) => {
         dispatch({type: 'LOADING'})

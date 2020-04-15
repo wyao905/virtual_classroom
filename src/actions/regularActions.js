@@ -24,3 +24,15 @@ export const setMessagedTarget = id => {
         id: id
     }
 }
+
+export const displayLoginForm = () => {
+    return {
+        type: 'LOGIN_FORM'
+    }
+}
+
+export const displayCreateForm = () => {
+    return {
+        type: 'CREATE_FORM'
+    }
+}

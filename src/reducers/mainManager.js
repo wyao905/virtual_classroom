@@ -13,7 +13,8 @@ const rootReducer = combineReducers({
     classSession: classSessionReducer,
     classLecture: classLectureReducer,
     messagedTarget: messagedTargetReducer,
-    loading: loadingReducer
+    loading: loadingReducer,
+    displayedForm: displayedFormReducer
 })
 
 export default rootReducer
@@ -142,9 +143,6 @@ function currentUserReducer(state = {}, action) {
     case "LOGIN":
       return action.user
 
-    case "LOGOUT":
-      return {}
-
     default:
       return state
   }
@@ -216,6 +214,19 @@ function loadingReducer(state = false, action) {
     
     case "LOADING_DONE":
       return false
+
+    default:
+      return state
+  }
+}
+
+function displayedFormReducer(state = "login", action) {
+  switch(action.type) {
+    case "LOGIN_FORM":
+      return "login"
+
+    case "CREATE_FORM":
+      return "create"
 
     default:
       return state

@@ -10,4 +10,14 @@ class StudentsController < ApplicationController
         options = {include: [:messages]}
         render json: StudentSerializer.new(student, options)
     end
+
+    def create
+        existing_student = Student.find_by(email: params[:email])
+        if !!existing_student
+            render json: {error: "Email already in use"}
+        else
+            student = Student.create(name: params[:name], password: params[:password], email: params[:email])
+            render json: StudentSerializer.new(student)
+        end
+    end
 end
