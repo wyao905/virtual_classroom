@@ -126,8 +126,8 @@ function subjectsReducer(state = [], action) {
     case "ADD_SUBJECTS":
       return [].concat(action.subjects)
 
-    // case "ADD_SUBJECT":
-    //   return [...state, action.subject]
+    case "ADD_SUBJECT":
+      return [...state, action.subject]
    
     // case "REMOVE_SUBJECT":
     //   idx = state.findIndex(subject => subject.id === action.id)

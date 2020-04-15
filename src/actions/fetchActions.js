@@ -110,6 +110,27 @@ export const addLecture = (lecture) => {
     }
 }
 
+export const addSubject = (subject) => {
+    return(dispatch) => {
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(subject)
+        }
+
+        dispatch({type: 'LOADING'})
+        fetch("http://localhost:3001/subjects", configObj)
+            .then(response => {return response.json()})
+            .then(newSubject => {
+                dispatch({type: 'ADD_SUBJECT', subject: newSubject.data})
+                dispatch({type: 'LOADING_DONE'})
+            })
+    }
+}
+
 export const updateClassLecture = (lectureInfo, id) => {
     return(dispatch) => {
         let configObj = {

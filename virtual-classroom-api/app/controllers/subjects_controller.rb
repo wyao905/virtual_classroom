@@ -4,4 +4,12 @@ class SubjectsController < ApplicationController
         options = {include: [:messages, :instructor, :lectures, :students]}
         render json: SubjectSerializer.new(subject, options)
     end
+
+    def create
+        instructor = Instructor.find(params[:instructor_id])
+        subject = instructor.subjects.build(name: params[:name])
+        subject.save
+        options = {include: [:instructor]}
+        render json: SubjectSerializer.new(subject, options)
+    end
 end
