@@ -10,11 +10,24 @@ class App extends Component {
     this.props.initialFetch()
   }
 
+  showLoginLogout = () => {
+    if(this.props.state.currentUser.id === undefined) {
+      return <Login checkLogin={this.props.checkLogin}/>
+    } else {
+      return <form>
+        <input type="submit" value="Logout"/>
+      </form>
+    }
+  }
+
+
+
   render() {
     // console.log(this.props.state)
     return (
       <div className="App">
-        <Login checkLogin={this.props.checkLogin}/>
+        {/* {this.showNewUser()} */}
+        {this.showLoginLogout()}
         <Body/>
       </div>
     );
