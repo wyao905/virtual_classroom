@@ -130,10 +130,42 @@ export const addMessage = (message) => {
 
 export const loadMessages = (type, id) => {
     return(dispatch) => {
+        dispatch({type: 'LOADING'})
         fetch(`http://localhost:3001/${type}/${id}`)
             .then(response => {return response.json()})
             .then(studentInfo => {
                 dispatch({type: 'ADD_MESSAGES', messages: studentInfo.included})
+                dispatch({type: 'LOADING_DONE'})
+            })
+    }
+}
+
+export const addEnrollment = (emailObj, subjectId) => {
+    return(dispatch) => {
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                email: emailObj.email,
+                subjectId: subjectId
+            })
+        }
+
+        dispatch({type: 'LOADING'})
+        fetch("http://localhost:3001/enrollments", configObj)
+            .then(response => {return response.json()})
+            .then(newEnrollment => {
+                if(newEnrollment.error === undefined) {
+                    let student = newEnrollment.included.find(obj => obj.type === "student")
+                    dispatch({type: 'UPDATE_STUDENT', student: student})
+                    dispatch({type: 'LOADING_DONE'})
+                } else {
+                    dispatch({type: 'LOADING_DONE'})
+                    console.log(newEnrollment.error)
+                }
             })
     }
 }

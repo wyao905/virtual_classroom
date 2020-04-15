@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Student from './student'
+import EnrollmentForm from './enrollmentForm'
 import {setMessagedTarget} from '../../actions/regularActions'
-import {loadMessages} from '../../actions/fetchActions'
+import {loadMessages, addEnrollment} from '../../actions/fetchActions'
 
 class StudentsContainer extends Component {
     showStudents = () => {
@@ -20,6 +21,16 @@ class StudentsContainer extends Component {
         })
     }
 
+    enrollStudent = () => {
+        if(this.props.user.type === "instructor" && !!this.props.subject.id) {
+            return <EnrollmentForm
+                addEnrollment={this.props.addEnrollment}
+                subject={this.props.subject}/>
+        } else {
+            return null
+        }
+    }
+
     handleClick = id => {
         if(this.props.user.type === "instructor") {
             this.props.setMessagedTarget(id)
@@ -31,6 +42,7 @@ class StudentsContainer extends Component {
         return(
             <div>
                 {this.showStudents()}
+                {this.enrollStudent()}
             </div>
         )
     }
@@ -39,7 +51,8 @@ class StudentsContainer extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         setMessagedTarget: (id) => dispatch(setMessagedTarget(id)),
-        loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId))
+        loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId)),
+        addEnrollment: (email, subjectId) => dispatch(addEnrollment(email, subjectId))
     }
 }
 

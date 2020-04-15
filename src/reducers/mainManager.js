@@ -19,13 +19,14 @@ const rootReducer = combineReducers({
 export default rootReducer
 
 function studentsReducer(state = [], action) {
-  // let idx
+  let idx
   switch(action.type) {
     case "ADD_STUDENTS":
       return [...action.students]
 
-    // case "ADD_STUDENT":
-    //   return [...state, action.student]
+    case "UPDATE_STUDENT":
+      idx = state.findIndex(student => student.id === action.student.id)
+      return [...state.slice(0, idx), action.student, ...state.slice(idx + 1)]
 
     // case "REMOVE_STUDENT":
     //   idx = state.findIndex(student => student.id === action.id)
