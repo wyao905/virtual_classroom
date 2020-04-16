@@ -57,8 +57,10 @@ export const signNewUser = (user) => {
         }
 
         dispatch({type: 'LOADING'})
-        // display error if user select is not chosen (equal to null)
-        fetch(`http://localhost:3001/${user.userSelectOption}s`, configObj)
+        if(user.userSelectOption === null) {
+            dispatch({type: 'DISPLAY_ERRORS', errors: {user: ["must be student or instructor"]}})
+        } else {
+            fetch(`http://localhost:3001/${user.userSelectOption}s`, configObj)
             .then(response => {return response.json()})
             .then(newUser => {
                 if(newUser.errors === undefined) {
@@ -69,6 +71,7 @@ export const signNewUser = (user) => {
                     dispatch({type: 'LOADING_DONE'})
                 }
             })
+        }
     }
 }
 

@@ -2,7 +2,7 @@ import './App.css'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {initialFetch, checkLogin, signNewUser} from './actions/fetchActions'
-import {displayLoginForm, displayCreateForm} from './actions/regularActions'
+import {displayLoginForm, displayCreateForm, clearErrors} from './actions/regularActions'
 import CreateFormButton from './components/createFormButton'
 import LoginFormButton from './components/loginFormButton'
 import Login from './components/login'
@@ -31,11 +31,16 @@ class App extends Component {
     if(!!this.props.state.displayErrors) {
       let keys = Object.keys(this.props.state.displayErrors)
       let values = Object.values(this.props.state.displayErrors)
-      for(let i = 0; i < keys.length; i++) {
-        let errorMsg = `${keys[i]} ${values[i]}`
+
+      setTimeout(
+        function() {this.props.clearErrors()}.bind(this),
+        5000)
+
+      return keys.map((key, i) => {
+        let errorMsg = `${key} ${values[i]}`
         let errorMsgCap = errorMsg.charAt(0).toUpperCase() + errorMsg.slice(1)
-        return <ul><Error error={errorMsgCap}/></ul>
-      }
+        return <Error error={errorMsgCap}/>
+      })
     } else {
       return null
     }
@@ -67,7 +72,7 @@ class App extends Component {
       <div className="App">
         {this.showFormButtons()}
         {this.showLoginLogoutCreate()}
-        {this.showErrors()}
+        <ul>{this.showErrors()}</ul>
         <Body/>
       </div>
     );
@@ -86,7 +91,8 @@ const mapDispatchToProps = dispatch => {
     checkLogin: (user) => dispatch(checkLogin(user)),
     displayLoginForm: () => dispatch(displayLoginForm()),
     displayCreateForm: () => dispatch(displayCreateForm()),
-    signNewUser: (user) => dispatch(signNewUser(user))
+    signNewUser: (user) => dispatch(signNewUser(user)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 
