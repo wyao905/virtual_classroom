@@ -4,7 +4,7 @@ class EnrollmentsController < ApplicationController
         if !!student
             subject = Subject.find(params[:subjectId])
             if student.subjects.include?(subject)
-                render json: {error: "Student already enrolled"}
+                render json: {errors: {student: ["already enrolled"]}}
             else
                 enrollment = student.enrollments.build(subject_id: params[:subjectId])
                 enrollment.save
@@ -12,7 +12,7 @@ class EnrollmentsController < ApplicationController
                 render json: EnrollmentSerializer.new(enrollment, options)
             end
         else
-            render json: {error: "Student not found"}
+            render json: {errors: {student: ["not found"]}}
         end
     end
 end

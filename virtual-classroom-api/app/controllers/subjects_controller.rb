@@ -8,8 +8,11 @@ class SubjectsController < ApplicationController
     def create
         instructor = Instructor.find(params[:instructor_id])
         subject = instructor.subjects.build(name: params[:name])
-        subject.save
-        options = {include: [:instructor]}
-        render json: SubjectSerializer.new(subject, options)
+        if subject.save
+            options = {include: [:instructor]}
+            render json: SubjectSerializer.new(subject, options)
+        else
+            render json: {errors: subject.errors}
+        end
     end
 end

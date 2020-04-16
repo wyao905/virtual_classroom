@@ -30,7 +30,7 @@ export const checkLogin = (user) => {
         fetch("http://localhost:3001/sessions", configObj)
             .then(response => {return response.json()})
             .then(verifiedUser => {
-                if(verifiedUser.error === undefined) {
+                if(verifiedUser.errors === undefined) {
                     dispatch({type: 'LOGIN', user: verifiedUser.data})
                     let subjects = verifiedUser.included.filter(obj => obj.type === "subject")
                     let messages = verifiedUser.included.filter(obj => obj.type === "message")
@@ -39,7 +39,7 @@ export const checkLogin = (user) => {
                     dispatch({type: 'LOADING_DONE'})
                 } else {
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(verifiedUser.error)
+                    console.log(verifiedUser.errors)
                 }
             })
     }
@@ -57,15 +57,16 @@ export const signNewUser = (user) => {
         }
 
         dispatch({type: 'LOADING'})
+        // display error if user select is not chosen (equal to null)
         fetch(`http://localhost:3001/${user.userSelectOption}s`, configObj)
             .then(response => {return response.json()})
             .then(newUser => {
-                if(newUser.error === undefined) {
+                if(newUser.errors === undefined) {
                     dispatch({type: 'LOGIN', user: newUser.data})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(newUser.error)
+                    console.log(newUser.errors)
                 }
             })
     }
@@ -125,8 +126,13 @@ export const addSubject = (subject) => {
         fetch("http://localhost:3001/subjects", configObj)
             .then(response => {return response.json()})
             .then(newSubject => {
-                dispatch({type: 'ADD_SUBJECT', subject: newSubject.data})
-                dispatch({type: 'LOADING_DONE'})
+                if(newSubject.errors === undefined) {
+                    dispatch({type: 'ADD_SUBJECT', subject: newSubject.data})
+                    dispatch({type: 'LOADING_DONE'})
+                } else {
+                    dispatch({type: 'LOADING_DONE'})
+                    console.log(newSubject.errors)
+                }
             })
     }
 }
@@ -169,8 +175,13 @@ export const addMessage = (message) => {
         fetch("http://localhost:3001/messages", configObj)
             .then(response => {return response.json()})
             .then(newMessage => {
-                dispatch({type: 'ADD_MESSAGE', message: newMessage.data})
-                dispatch({type: 'LOADING_DONE'})
+                if(newMessage.errors === undefined) {
+                    dispatch({type: 'ADD_MESSAGE', message: newMessage.data})
+                    dispatch({type: 'LOADING_DONE'})
+                } else {
+                    dispatch({type: 'LOADING_DONE'})
+                    console.log(newMessage.errors)
+                }
             })
     }
 }
@@ -205,13 +216,13 @@ export const addEnrollment = (emailObj, subjectId) => {
         fetch("http://localhost:3001/enrollments", configObj)
             .then(response => {return response.json()})
             .then(newEnrollment => {
-                if(newEnrollment.error === undefined) {
+                if(newEnrollment.errors === undefined) {
                     let student = newEnrollment.included.find(obj => obj.type === "student")
                     dispatch({type: 'UPDATE_STUDENT', student: student})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(newEnrollment.error)
+                    console.log(newEnrollment.errors)
                 }
             })
     }

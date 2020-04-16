@@ -1,24 +1,26 @@
 class SessionsController < ApplicationController
     def create
-        if params[:userSelectOption] == "student"
-            user = Student.find_by(email: params[:email])
-            options = {include: [:enrollments, :messages, :subjects]}
-            serializer = StudentSerializer.new(user, options)
-        elsif params[:userSelectOption] == "instructor"
-            user = Instructor.find_by(email: params[:email])
-            options = {include: [:subjects, :messages]}
-            serializer = InstructorSerializer.new(user, options)
+        if params[:userSelectOption].nil?
+            render json: {errors: {user: ["must be student or instructor"]}}
         else
-            user = nil
-        end
-
-        if user.nil?
-            render json: {error: "Unable to find user"}
-        else
-            if !user.authenticate(params[:password])
-                render json: {error: "Incorrect password"}
+            if params[:userSelectOption] == "student"
+                user = Student.find_by(email: params[:email])
+                options = {include: [:enrollments, :messages, :subjects]}
+                serializer = StudentSerializer.new(user, options)
+            else 
+                user = Instructor.find_by(email: params[:email])
+                options = {include: [:subjects, :messages]}
+                serializer = InstructorSerializer.new(user, options)
+            end
+    
+            if user.nil?
+                render json: {errors: {user: ["not found"]}}
             else
-                render json: serializer
+                if !user.authenticate(params[:password])
+                    render json: {errors: {password: ["is incorrect"]}}
+                else
+                    render json: serializer
+                end
             end
         end
     end

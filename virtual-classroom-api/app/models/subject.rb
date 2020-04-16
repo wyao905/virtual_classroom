@@ -4,4 +4,6 @@ class Subject < ApplicationRecord
   has_many :lectures
   has_many :messages
   has_many :students, through: :enrollments
+
+  validates :name, presence: true
 end

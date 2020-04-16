@@ -12,12 +12,11 @@ class InstructorsController < ApplicationController
     end
 
     def create
-        existing_instructor = Instructor.find_by(email: params[:email])
-        if !!existing_instructor
-            render json: {error: "Email already in use"}
-        else
-            instructor = Instructor.create(name: params[:name], password: params[:password], email: params[:email])
+        instructor = Instructor.new(name: params[:name], password: params[:password], email: params[:email])
+        if instructor.save
             render json: InstructorSerializer.new(instructor)
+        else
+            render json: {errors: instructor.errors}
         end
     end
 end

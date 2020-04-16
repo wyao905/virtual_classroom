@@ -11,8 +11,11 @@ class MessagesController < ApplicationController
                                          sender: params[:sender],
                                          student_id: params[:student],
                                          instructor_id: params[:instructor])
-        message.save
-        options = {include: [:instructor, :student, :subject]}
-        render json: MessageSerializer.new(message, options)
+        if message.save
+            options = {include: [:instructor, :student, :subject]}
+            render json: MessageSerializer.new(message, options)
+        else
+            render json: {errors: message.errors}
+        end
     end
 end
