@@ -8,6 +8,7 @@ import LoginFormButton from './components/loginFormButton'
 import Login from './components/login'
 import NewUserForm from './components/newUserForm'
 import Body from './components/body'
+import Error from './components/error'
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,20 @@ class App extends Component {
       }
     } else {
       return <form><input type="submit" value="Logout"/></form>
+    }
+  }
+
+  showErrors = () => {
+    if(!!this.props.state.displayErrors) {
+      let keys = Object.keys(this.props.state.displayErrors)
+      let values = Object.values(this.props.state.displayErrors)
+      for(let i = 0; i < keys.length; i++) {
+        let errorMsg = `${keys[i]} ${values[i]}`
+        let errorMsgCap = errorMsg.charAt(0).toUpperCase() + errorMsg.slice(1)
+        return <ul><Error error={errorMsgCap}/></ul>
+      }
+    } else {
+      return null
     }
   }
   
@@ -52,6 +67,7 @@ class App extends Component {
       <div className="App">
         {this.showFormButtons()}
         {this.showLoginLogoutCreate()}
+        {this.showErrors()}
         <Body/>
       </div>
     );

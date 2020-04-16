@@ -14,7 +14,8 @@ const rootReducer = combineReducers({
     classLecture: classLectureReducer,
     messagedTarget: messagedTargetReducer,
     loading: loadingReducer,
-    displayedForm: displayedFormReducer
+    displayedForm: displayedFormReducer,
+    displayErrors: displayErrorsReducer
 })
 
 export default rootReducer
@@ -228,6 +229,19 @@ function displayedFormReducer(state = "login", action) {
     case "CREATE_FORM":
       return "create"
 
+    default:
+      return state
+  }
+}
+
+function displayErrorsReducer(state = false, action) {
+  switch(action.type) {
+    case "DISPLAY_ERRORS":
+      return action.errors
+
+    case "CLEAR_ERRORS":
+      return false
+    
     default:
       return state
   }

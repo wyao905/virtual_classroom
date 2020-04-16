@@ -36,3 +36,9 @@ export const displayCreateForm = () => {
         type: 'CREATE_FORM'
     }
 }
+
+export const clearErrors = () => {
+    return {
+        type: 'CLEAR_ERRORS'
+    }
+}

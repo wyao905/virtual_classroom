@@ -38,8 +38,8 @@ export const checkLogin = (user) => {
                     dispatch({type: 'ADD_MESSAGES', messages: messages})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
+                    dispatch({type: 'DISPLAY_ERRORS', errors: verifiedUser.errors})
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(verifiedUser.errors)
                 }
             })
     }
@@ -65,8 +65,8 @@ export const signNewUser = (user) => {
                     dispatch({type: 'LOGIN', user: newUser.data})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
+                    dispatch({type: 'DISPLAY_ERRORS', errors: newUser.errors})
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(newUser.errors)
                 }
             })
     }
@@ -130,8 +130,8 @@ export const addSubject = (subject) => {
                     dispatch({type: 'ADD_SUBJECT', subject: newSubject.data})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
+                    dispatch({type: 'DISPLAY_ERRORS', errors: newSubject.errors})
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(newSubject.errors)
                 }
             })
     }
@@ -179,8 +179,8 @@ export const addMessage = (message) => {
                     dispatch({type: 'ADD_MESSAGE', message: newMessage.data})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
+                    dispatch({type: 'DISPLAY_ERRORS', errors: newMessage.errors})
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(newMessage.errors)
                 }
             })
     }
@@ -221,8 +221,8 @@ export const addEnrollment = (emailObj, subjectId) => {
                     dispatch({type: 'UPDATE_STUDENT', student: student})
                     dispatch({type: 'LOADING_DONE'})
                 } else {
+                    dispatch({type: 'DISPLAY_ERRORS', errors: newEnrollment.errors})
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(newEnrollment.errors)
                 }
             })
     }
