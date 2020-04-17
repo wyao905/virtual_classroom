@@ -11,6 +11,7 @@ class LectureInput extends Component {
     }
 
     lectureInput = () => {
+        // need to fix issue with clicking on another subject while mid class
         if(this.props.classSession) {
             if(this.props.classLecture.attributes.title === "") {
                 return <form onSubmit={event => this.handleSubmit(event)}>
