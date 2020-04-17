@@ -25,18 +25,6 @@ export const setMessagedTarget = id => {
     }
 }
 
-export const displayLoginForm = () => {
-    return {
-        type: 'LOGIN_FORM'
-    }
-}
-
-export const displayCreateForm = () => {
-    return {
-        type: 'CREATE_FORM'
-    }
-}
-
 export const clearErrors = () => {
     return {
         type: 'CLEAR_ERRORS'

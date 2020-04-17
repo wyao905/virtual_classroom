@@ -1,10 +1,15 @@
 import './App.css'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
+
 import {initialFetch, checkLogin, signNewUser} from './actions/fetchActions'
-import {displayLoginForm, displayCreateForm, clearErrors} from './actions/regularActions'
-import CreateFormButton from './components/createFormButton'
-import LoginFormButton from './components/loginFormButton'
+import {clearErrors} from './actions/regularActions'
 import Login from './components/login'
 import NewUserForm from './components/newUserForm'
 import Body from './components/body'
@@ -13,18 +18,6 @@ import Error from './components/error'
 class App extends Component {
   componentDidMount() {
     this.props.initialFetch()
-  }
-
-  showLoginLogoutCreate = () => {
-    if(this.props.state.currentUser.id === undefined) {
-      if(this.props.state.displayedForm === "login") {
-        return <Login checkLogin={this.props.checkLogin}/>
-      } else {
-        return <NewUserForm signNewUser={this.props.signNewUser}/>
-      }
-    } else {
-      return <form><input type="submit" value="Logout"/></form>
-    }
   }
 
   showErrors = () => {
@@ -46,36 +39,25 @@ class App extends Component {
     }
   }
   
-  showFormButtons = () => {
-    if(this.props.state.currentUser.id === undefined) {
-      if(this.props.state.displayedForm === "login") {
-        return <CreateFormButton handleClick={this.handleClick}/>
-      } else {
-        return <LoginFormButton handleClick={this.handleClick}/>
-      }
-    } else {
-      return null
-    }
-  }
-
-  handleClick = state => {
-    if(state === "login") {
-      this.props.displayLoginForm()
-    } else {
-      this.props.displayCreateForm()
-    }
-  }
-  
   render() {
     // console.log(this.props.state)
     return (
-      <div className="App">
-        {this.showFormButtons()}
-        {this.showLoginLogoutCreate()}
+      <Router>
+        <Link to="/">Home</Link>
+        <Link to="/signup">SignUp</Link>
+
+        <Switch>
+          <Route path="/signup">
+            <NewUserForm signNewUser={this.props.signNewUser}/>
+          </Route>
+          <Route path="/">
+            <Login checkLogin={this.props.checkLogin}/>
+          </Route>
+        </Switch>
         <ul>{this.showErrors()}</ul>
         <Body/>
-      </div>
-    );
+      </Router>
+    )
   }
 }
 
@@ -89,8 +71,6 @@ const mapDispatchToProps = dispatch => {
   return {
     initialFetch: () => dispatch(initialFetch()),
     checkLogin: (user) => dispatch(checkLogin(user)),
-    displayLoginForm: () => dispatch(displayLoginForm()),
-    displayCreateForm: () => dispatch(displayCreateForm()),
     signNewUser: (user) => dispatch(signNewUser(user)),
     clearErrors: () => dispatch(clearErrors())
   }
