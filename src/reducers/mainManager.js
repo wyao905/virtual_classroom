@@ -143,6 +143,9 @@ function currentUserReducer(state = {}, action) {
     case "LOGIN":
       return action.user
 
+    case "LOGOUT":
+      return {}
+
     default:
       return state
   }
@@ -152,6 +155,9 @@ function currentSubjectReducer(state = {}, action) {
   switch(action.type) {
     case "SET_CURRENT_SUBJECT":
       return action.subject
+
+    case "LOGOUT":
+      return {}
 
     default:
       return state
@@ -165,6 +171,9 @@ function currentLectureReducer(state = "", action) {
     
     case "CLEAR_LECTURE_CONTENT":
       return action.id
+    
+    case "LOGOUT":
+      return ""
 
     default:
       return state
@@ -201,6 +210,9 @@ function messagedTargetReducer(state = "", action) {
   switch(action.type) {
     case "SET_MESSAGED_TARGET":
       return action.id
+
+    case "LOGOUT":
+      return ""
 
     default:
       return state

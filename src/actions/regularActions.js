@@ -30,3 +30,9 @@ export const clearErrors = () => {
         type: 'CLEAR_ERRORS'
     }
 }
+
+export const clearCurrentState = () => {
+    return {
+        type: 'LOGOUT'
+    }
+}

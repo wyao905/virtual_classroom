@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from "react-router-dom"
 import SubjectsContainer from './subjects/subjectsContainer'
 import LecturesContainer from './lectures/lecturesContainer'
 import StudentsContainer from './students/studentsContainer'
@@ -9,6 +10,7 @@ class Body extends Component {
     render() {
         return(
             <div>
+                <Link to="/" onClick={() => this.props.clearCurrentState()}>Logout</Link>
                 <SubjectsContainer/>
                 <LecturesContainer/>
                 <StudentsContainer

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"
 
 import {initialFetch, checkLogin, signNewUser} from './actions/fetchActions'
-import {clearErrors} from './actions/regularActions'
+import {clearErrors, clearCurrentState} from './actions/regularActions'
 import Login from './components/login'
 import NewUserForm from './components/newUserForm'
 import Body from './components/body'
@@ -50,7 +50,7 @@ class App extends Component {
             <NewUserForm signNewUser={this.props.signNewUser}/>
           </Route>
           <Route path="/user">
-            <Body/>
+            <Body clearCurrentState={this.props.clearCurrentState}/>
           </Route>
           <Route path="/">
             <Login checkLogin={this.props.checkLogin}/>
@@ -73,7 +73,8 @@ const mapDispatchToProps = dispatch => {
     initialFetch: () => dispatch(initialFetch()),
     checkLogin: (user, history) => dispatch(checkLogin(user, history)),
     signNewUser: (user, history) => dispatch(signNewUser(user, history)),
-    clearErrors: () => dispatch(clearErrors())
+    clearErrors: () => dispatch(clearErrors()),
+    clearCurrentState: () => dispatch(clearCurrentState())
   }
 }
 
