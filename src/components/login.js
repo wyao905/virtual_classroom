@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link, withRouter} from "react-router-dom"
 import Select from 'react-select'
 
 class Login extends Component {
@@ -22,7 +23,8 @@ class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.props.checkLogin(this.state)
+        let {history} = this.props
+        this.props.checkLogin(this.state, history)
         this.setState({
             email: "",
             password: "",
@@ -32,20 +34,23 @@ class Login extends Component {
 
     render() {
         return(
-            <form onSubmit={event => this.handleSubmit(event)}>
-                <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
-                <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
-                <Select
-                    value={this.state.userSelectOption}
-                    onChange={event => this.handleSelectChange(event)}
-                    options={[
-                        {value: 'student', label: 'Student'},
-                        {value: 'instructor', label: 'Instructor'}
-                ]}/>
-                <input type="submit" value="Login" />
-            </form>
+            <div>
+                <Link to="/signup">SignUp</Link>
+                <form onSubmit={event => this.handleSubmit(event)}>
+                    <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
+                    <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
+                    <Select
+                        value={this.state.userSelectOption}
+                        onChange={event => this.handleSelectChange(event)}
+                        options={[
+                            {value: 'student', label: 'Student'},
+                            {value: 'instructor', label: 'Instructor'}
+                    ]}/>
+                    <input type="submit" value="Login"/>
+                </form>
+            </div>
         )
     }
 }
 
-export default Login
+export default withRouter(Login)

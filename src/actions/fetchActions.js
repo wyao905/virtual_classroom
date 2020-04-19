@@ -15,7 +15,7 @@ export const initialFetch = () => {
     }
 }
 
-export const checkLogin = (user) => {
+export const checkLogin = (user, history) => {
     return(dispatch) => {
         let configObj = {
             method: "POST",
@@ -37,6 +37,7 @@ export const checkLogin = (user) => {
                     dispatch({type: 'ADD_SUBJECTS', subjects: subjects})
                     dispatch({type: 'ADD_MESSAGES', messages: messages})
                     dispatch({type: 'LOADING_DONE'})
+                    history.push('/user')
                 } else {
                     dispatch({type: 'DISPLAY_ERRORS', errors: verifiedUser.errors})
                     dispatch({type: 'LOADING_DONE'})

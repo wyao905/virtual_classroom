@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Select from 'react-select'
 
 class NewUserForm extends Component {
@@ -34,19 +35,22 @@ class NewUserForm extends Component {
 
     render() {
         return(
-            <form onSubmit={event => this.handleSubmit(event)}>
-                <input name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>
-                <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
-                <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
-                <Select
-                    value={this.state.userSelectOption}
-                    onChange={event => this.handleSelectChange(event)}
-                    options={[
-                        {value: 'student', label: 'Student'},
-                        {value: 'instructor', label: 'Instructor'}
-                ]}/>
-                <input type="submit" value="Create" />
-            </form>
+            <div>
+                <Link to="/">Home</Link>
+                <form onSubmit={event => this.handleSubmit(event)}>
+                    <input name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>
+                    <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
+                    <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
+                    <Select
+                        value={this.state.userSelectOption}
+                        onChange={event => this.handleSelectChange(event)}
+                        options={[
+                            {value: 'student', label: 'Student'},
+                            {value: 'instructor', label: 'Instructor'}
+                    ]}/>
+                    <input type="submit" value="Create" />
+                </form>
+            </div>
         )
     }
 }
