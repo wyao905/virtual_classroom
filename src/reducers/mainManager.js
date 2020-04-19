@@ -29,6 +29,9 @@ function studentsReducer(state = [], action) {
       idx = state.findIndex(student => student.id === action.student.id)
       return [...state.slice(0, idx), action.student, ...state.slice(idx + 1)]
 
+    case "ADD_STUDENT":
+      return [...state, action.student]
+
     // case "REMOVE_STUDENT":
     //   idx = state.findIndex(student => student.id === action.id)
     //   return [...state.slice(0, idx), ...state.slice(idx + 1)]
@@ -44,8 +47,8 @@ function instructorsReducer(state = [], action) {
     case "ADD_INSTRUCTORS":
       return [...action.instructors]
 
-    // case "ADD_INSTRUCTOR":
-    //   return [...state, action.instructor]
+    case "ADD_INSTRUCTOR":
+      return [...state, action.instructor]
    
     // case "REMOVE_INSTRUCTOR":
     //   idx = state.findIndex(instructor => instructor.id === action.id)

@@ -66,6 +66,11 @@ export const signNewUser = (user, history) => {
             .then(newUser => {
                 if(newUser.errors === undefined) {
                     dispatch({type: 'LOGIN', user: newUser.data})
+                    if(newUser.data.type === "student") {
+                        dispatch({type: 'ADD_STUDENT', student: newUser.data})
+                    } else {
+                        dispatch({type: 'ADD_INSTRUCTOR', instructor: newUser.data})
+                    }
                     dispatch({type: 'LOADING_DONE'})
                     history.push('/user')
                 } else {
