@@ -40,7 +40,10 @@ class App extends Component {
   }
   
   render() {
-    // console.log(this.props.state)
+    // need to implement student and instructor pages
+    // (separate components for students and instructors)
+    // use nested routes for student and instructors
+    // see react redux redirect
     return (
       <Router>
         <Link to="/">Home</Link>
@@ -53,9 +56,11 @@ class App extends Component {
           <Route path="/">
             <Login checkLogin={this.props.checkLogin}/>
           </Route>
+          <Route path="/user">
+            <Body/>
+          </Route>
         </Switch>
         <ul>{this.showErrors()}</ul>
-        <Body/>
       </Router>
     )
   }
