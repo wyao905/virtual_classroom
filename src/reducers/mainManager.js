@@ -84,6 +84,9 @@ function lecturesReducer(state = [], action) {
         }
       }
       return [...state, action.lecture]
+    
+    case "LOGOUT":
+      return []
    
     // case "REMOVE_LECTURE":
     //   idx = state.findIndex(lecture => lecture.id === action.id)
@@ -113,6 +116,9 @@ function messagesReducer(state = [], action) {
     
     case "ADD_MESSAGE":
       return [...state, action.message]
+
+    case "LOGOUT":
+      return []
    
     // case "REMOVE_MESSAGE":
     //   idx = state.findIndex(message => message.id === action.id)
@@ -131,6 +137,9 @@ function subjectsReducer(state = [], action) {
 
     case "ADD_SUBJECT":
       return [...state, action.subject]
+
+    case "LOGOUT":
+      return []
    
     // case "REMOVE_SUBJECT":
     //   idx = state.findIndex(subject => subject.id === action.id)
