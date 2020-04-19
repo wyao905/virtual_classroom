@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Select from 'react-select'
 
 class NewUserForm extends Component {
@@ -24,7 +24,8 @@ class NewUserForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.props.signNewUser(this.state)
+        let {history} = this.props
+        this.props.signNewUser(this.state, history)
         this.setState({
             name: "",
             email: "",
@@ -55,4 +56,4 @@ class NewUserForm extends Component {
     }
 }
 
-export default NewUserForm
+export default withRouter(NewUserForm)

@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
   return {
     initialFetch: () => dispatch(initialFetch()),
     checkLogin: (user, history) => dispatch(checkLogin(user, history)),
-    signNewUser: (user) => dispatch(signNewUser(user)),
+    signNewUser: (user, history) => dispatch(signNewUser(user, history)),
     clearErrors: () => dispatch(clearErrors())
   }
 }

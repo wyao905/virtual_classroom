@@ -46,7 +46,7 @@ export const checkLogin = (user, history) => {
     }
 }
 
-export const signNewUser = (user) => {
+export const signNewUser = (user, history) => {
     return(dispatch) => {
         let configObj = {
             method: "POST",
@@ -67,6 +67,7 @@ export const signNewUser = (user) => {
                 if(newUser.errors === undefined) {
                     dispatch({type: 'LOGIN', user: newUser.data})
                     dispatch({type: 'LOADING_DONE'})
+                    history.push('/user')
                 } else {
                     dispatch({type: 'DISPLAY_ERRORS', errors: newUser.errors})
                     dispatch({type: 'LOADING_DONE'})
