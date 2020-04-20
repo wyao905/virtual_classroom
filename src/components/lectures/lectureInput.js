@@ -66,7 +66,7 @@ class LectureInput extends Component {
         })
     }
 
-    handleEndClass = id => {
+    handleEndClass = () => {
         this.props.endClass()
         this.setState({
             title: "",

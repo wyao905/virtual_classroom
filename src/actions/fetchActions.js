@@ -165,6 +165,7 @@ export const updateClassLecture = (lectureInfo, id) => {
                 let updatedContent = updatedLecture.data.attributes.content.split("\n")
                 updatedLecture.data.attributes.content = updatedContent
                 dispatch({type: 'START_CLASS', lecture: updatedLecture.data})
+                dispatch({type: 'UPDATE_LECTURE', lecture: updatedLecture.data})
                 dispatch({type: 'LOADING_DONE'})
             })
     }

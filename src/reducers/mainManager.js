@@ -75,7 +75,7 @@ function instructorsReducer(state = [], action) {
 // }
 
 function lecturesReducer(state = [], action) {
-  // let idx
+  let idx
   switch(action.type) {
     case "ADD_LECTURE":
       for(let i = 0; i < state.length; i++) {
@@ -84,6 +84,10 @@ function lecturesReducer(state = [], action) {
         }
       }
       return [...state, action.lecture]
+
+    case "UPDATE_LECTURE":
+      idx = state.findIndex(lecture => lecture.id === action.lecture.id)
+      return [...state.slice(0, idx), action.lecture, ...state.slice(idx + 1)]
     
     case "LOGOUT":
       return []
