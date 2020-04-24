@@ -7,8 +7,8 @@ class SubjectForm extends Component {
 
     showForm = () => {
         return <form onSubmit={event => this.handleSubmit(event)}>
-            <label>New Subject</label>
-            <input name="name" type="text" onChange={event => this.handleChange(event)}/>
+            <label>Add new subject:</label>
+            <input className="input-text" name="name" type="text" onChange={event => this.handleChange(event)}/>
             <input type="submit" value="Add"/>
         </form>
     }

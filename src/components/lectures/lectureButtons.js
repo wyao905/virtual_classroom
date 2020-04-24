@@ -1,9 +1,9 @@
 import React from 'react'
 
 function LectureButtons(props) {
-    return <div>
+    return <div className="lecture">
         {`Date: ${props.date}`}
-        <button id={props.id} onClick={() => props.handleClick(props.id)}>{props.title}</button>
+        <button className="lecture-button" id={props.id} onClick={() => props.handleClick(props.id)}>{props.title}</button>
     </div>
 }
 

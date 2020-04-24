@@ -74,7 +74,7 @@ class LecturesContainer extends Component {
     render() {
         return(
             <div>
-                {this.showLectureButtons()}
+                <div id="lectures-container">{this.showLectureButtons()}</div>
                 {this.showLectureContent()}
                 {this.showClassLectureContent()}
                 {this.showLectureInput()}

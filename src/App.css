@@ -1,34 +1,56 @@
 .nav-link {
-  margin: 1rem;
+  margin: 1em;
 }
 
 #login-form {
-  margin: 1rem;
+  margin: 1em;
 }
 
 #create-form {
-  margin: 1rem;
+  margin: 1em;
 }
 
 .select {
-  width: 20rem;
+  width: 20em;
 }
 
 .input-text {
-  margin: 0rem 0.5rem 1rem;
+  margin: 0em 0.5em 1em;
 }
 
 #body {
-  margin: 1rem;
+  margin: 1em;
 }
 
 #subjects-container {
-  margin: 1rem 0rem;
+  margin: 1em 0em;
   border: rgb(155, 155, 155) solid 5px;
+  width: 50em;
+  text-align: center;
+  padding: 1em;
 }
 
 .subject-button {
   margin: 0px 5px 0px 0px;
   width: 10em;
   height: 2em;
+}
+
+.lecture-button {
+  margin: 0px 5px;
+  width: 10em;
+  height: 4em;
+}
+
+.lecture {
+  margin: 0.5em;
+}
+
+#lectures-container {
+  margin: 1em 0em;
+  background-color: rgb(200, 200, 200);
+  width: 20em;
+  text-align: center;
+  padding: 1em;
+  min-height: 30em;
 }
