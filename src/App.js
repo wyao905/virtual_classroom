@@ -39,10 +39,6 @@ class App extends Component {
   }
   
   render() {
-    // need to implement student and instructor pages
-    // (separate components for students and instructors)
-    // use nested routes for student and instructors
-    // see react redux redirect
     return (
       <Router>
         <Switch>

@@ -34,7 +34,8 @@ class SubjectsContainer extends Component {
 
     render() {
         return(
-            <div>
+            <div id="subjects-container">
+                <h3>Subjects</h3>
                 {this.showNewSubjectForm()}
                 {this.showSubjects()}
             </div>

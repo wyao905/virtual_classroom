@@ -37,18 +37,25 @@ class NewUserForm extends Component {
     render() {
         return(
             <div>
-                <Link to="/">Home</Link>
-                <form onSubmit={event => this.handleSubmit(event)}>
-                    <input name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>
-                    <input name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
-                    <input name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
+                <Link className="nav-link" to="/">Home</Link>
+                <form id="create-form" onSubmit={event => this.handleSubmit(event)}>
+                    <label>Name:</label>
+                    <input className="input-text" name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>
+                    <label>Email:</label>
+                    <input className="input-text" name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
+                    <label>Password:</label>
+                    <input className="input-text" name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
+                    <br/>
+                    <label>Login as student or instructor: </label>
                     <Select
+                        className="select"
                         value={this.state.userSelectOption}
                         onChange={event => this.handleSelectChange(event)}
                         options={[
                             {value: 'student', label: 'Student'},
                             {value: 'instructor', label: 'Instructor'}
                     ]}/>
+                    <br/>
                     <input type="submit" value="Create" />
                 </form>
             </div>
