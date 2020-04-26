@@ -5,8 +5,26 @@ import LectureContent from './lectureContent'
 import LectureContentHead from './lectureContentHead'
 import LectureInput from './lectureInput'
 import {displayLectureContent} from '../../actions/regularActions'
+import {reloadLecture} from '../../api'
 
 class LecturesContainer extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            classLectureTitle: "",
+            classLectureContent: ""
+        }
+
+        reloadLecture((lec) => {
+            this.setState({ 
+                classLectureTitle: lec.attributes.title,
+                classLectureContent: lec.attributes.content
+            })
+        })
+    }
+    
+
     showLectureButtons = () => {
         return this.props.lectures.map(lec => {
             if(lec.relationships.subject.data.id === this.props.currentSubject.id) {
@@ -38,12 +56,22 @@ class LecturesContainer extends Component {
 
     showClassLectureContent = () => {
         if(this.props.classSession) {
-            return <div>
-                <LectureContentHead
+            console.log(this.state)
+            if(this.props.currentUser.type === "instructor") {
+                return <div>
+                    <LectureContentHead
                     date={this.props.classLecture.attributes.created_at.split("T")[0]}
                     title={this.props.classLecture.attributes.title}/>
-                {this.contentBody(this.props.classLecture.attributes.content)}
+                    {this.contentBody(this.props.classLecture.attributes.content)}
                 </div>
+            } else {
+                return <div>
+                    <LectureContentHead
+                    date={this.props.classLecture.attributes.created_at.split("T")[0]}
+                    title={this.state.classLectureTitle}/>
+                    {this.contentBody(this.state.classLectureContent)}
+                </div>
+            }
         } else {
             return null
         }

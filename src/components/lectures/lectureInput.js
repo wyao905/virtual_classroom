@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {addLecture, updateClassLecture} from '../../actions/fetchActions'
 import {endClass} from '../../actions/regularActions'
-import {updateLecture, reloadLecture} from '../../api'
 
 
 class LectureInput extends Component {
@@ -55,7 +54,6 @@ class LectureInput extends Component {
             title: "",
             content: ""
         })
-        updateLecture()
     }
 
     handleStartClass = () => {
@@ -77,9 +75,6 @@ class LectureInput extends Component {
     }
 
     render() {
-        reloadLecture(() => {
-            console.log("showing update")
-        })
         return(
             <div>
                 {this.lectureInput()}
