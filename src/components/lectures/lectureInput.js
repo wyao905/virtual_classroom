@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {addLecture, updateClassLecture} from '../../actions/fetchActions'
 import {endClass} from '../../actions/regularActions'
+import {updateLecture} from '../../api'
 
 
 class LectureInput extends Component {
@@ -11,7 +12,6 @@ class LectureInput extends Component {
     }
 
     lectureInput = () => {
-        // need to fix issue with clicking on another subject while mid class
         if(this.props.classSession) {
             if(this.props.classLecture.attributes.title === "") {
                 return <form onSubmit={event => this.handleSubmit(event)}>
@@ -54,6 +54,9 @@ class LectureInput extends Component {
         this.setState({
             title: "",
             content: ""
+        })
+        updateLecture(() => {
+            console.log("lecture updated")
         })
     }
 

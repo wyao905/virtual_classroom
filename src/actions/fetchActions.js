@@ -115,6 +115,7 @@ export const addLecture = (lecture) => {
         fetch("http://localhost:3001/lectures", configObj)
             .then(response => {return response.json()})
             .then(newLecture => {
+                dispatch({type: 'ADD_LECTURE', lecture: newLecture.data})
                 dispatch({type: 'START_CLASS', lecture: newLecture.data})
                 dispatch({type: 'LOADING_DONE'})
             })
