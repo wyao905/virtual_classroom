@@ -55,6 +55,7 @@ class LecturesContainer extends Component {
     }
 
     showClassLectureContent = () => {
+        // need to add start class session button for students to display real time lecture updates
         console.log(this.state)
         if(this.props.classSession) {
             if(this.props.currentUser.type === "instructor") {
