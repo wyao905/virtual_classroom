@@ -55,8 +55,8 @@ class LecturesContainer extends Component {
     }
 
     showClassLectureContent = () => {
+        console.log(this.state)
         if(this.props.classSession) {
-            console.log(this.state)
             if(this.props.currentUser.type === "instructor") {
                 return <div>
                     <LectureContentHead
