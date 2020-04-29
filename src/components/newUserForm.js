@@ -49,7 +49,7 @@ class NewUserForm extends Component {
                     <label>Login as student or instructor: </label>
                     <Select
                         className="select"
-                        value={this.state.userSelectOption}
+                        label={this.state.userSelectOption}
                         onChange={event => this.handleSelectChange(event)}
                         options={[
                             {value: 'student', label: 'Student'},
