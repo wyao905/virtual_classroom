@@ -54,7 +54,8 @@ class NewUserForm extends Component {
                         options={[
                             {value: 'student', label: 'Student'},
                             {value: 'instructor', label: 'Instructor'}
-                    ]}/>
+                        ]}
+                    />
                     <br/>
                     <input type="submit" value="Create" />
                 </form>

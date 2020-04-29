@@ -17,9 +17,11 @@ class SubjectsContainer extends Component {
     showSubjects = () => {
         return this.props.subjects.map(sub => {
             return <Subject
+                key={sub.id}
                 id={sub.id}
                 name={sub.attributes.name}
-                handleClick={this.handleClick}/>
+                handleClick={this.handleClick}
+            />
         })
     }
 
