@@ -29,6 +29,7 @@ class LecturesContainer extends Component {
         return this.props.lectures.map(lec => {
             if(lec.relationships.subject.data.id === this.props.currentSubject.id) {
                 return <LectureButtons
+                    key={lec.id}
                     id={lec.id}
                     date={lec.attributes.created_at.split("T")[0]}
                     title={lec.attributes.title}
@@ -103,10 +104,12 @@ class LecturesContainer extends Component {
     render() {
         return(
             <div>
-                <div id="lectures-container">{this.showLectureButtons()}</div>
+                <div id="lectures-container">
+                    {this.showLectureButtons()}
+                    {this.showLectureInput()}
+                </div>
                 {this.showLectureContent()}
                 {this.showClassLectureContent()}
-                {this.showLectureInput()}
             </div>
         )
     }

@@ -11,6 +11,7 @@ class StudentsContainer extends Component {
             let studentSubjects = stu.relationships.subjects.data.map(sub => sub.id)
             if(studentSubjects.includes(this.props.subject.id)) {
                 return <Student
+                    key={stu.id}
                     id={stu.id}
                     name={stu.attributes.name}
                     email={stu.attributes.email}
