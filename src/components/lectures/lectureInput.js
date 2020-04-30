@@ -35,9 +35,9 @@ class LectureInput extends Component {
 
     classSessionButtons = () => {
         if(this.props.classSession) {
-            return <button onClick={this.handleEndClass}>End</button>
+            return <button className="session-button" onClick={this.handleEndClass}>End Class</button>
         } else {
-            return <button onClick={this.handleStartClass}>Start</button>
+            return <button className="session-button" onClick={this.handleStartClass}>Start Class</button>
         }
     }
 
@@ -77,8 +77,8 @@ class LectureInput extends Component {
     render() {
         return(
             <div>
-                {this.lectureInput()}
                 {this.classSessionButtons()}
+                {this.lectureInput()}
             </div>
         )
     }
