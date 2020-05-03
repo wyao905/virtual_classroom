@@ -11,6 +11,7 @@ const rootReducer = combineReducers({
     currentSubject: currentSubjectReducer,
     currentLecture: currentLectureReducer,
     classSession: classSessionReducer,
+    joinSession: joinSessionReducer,
     classLecture: classLectureReducer,
     messagedTarget: messagedTargetReducer,
     loading: loadingReducer,
@@ -202,6 +203,19 @@ function classSessionReducer(state = false, action) {
       return true
 
     case "END_CLASS":
+      return false
+
+    default:
+      return state
+  }
+}
+
+function joinSessionReducer(state = false, action) {
+  switch(action.type) {
+    case "JOIN_CLASS":
+      return true
+    
+    case "LEAVE_CLASS":
       return false
 
     default:

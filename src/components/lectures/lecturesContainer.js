@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
+import JoinClassButton from './joinClassButton'
 import LectureContent from './lectureContent'
 import LectureContentHead from './lectureContentHead'
 import LectureInput from './lectureInput'
-import {displayLectureContent} from '../../actions/regularActions'
+import {displayLectureContent, joinClass, leaveClass} from '../../actions/regularActions'
 import {reloadLecture} from '../../api'
 
 class LecturesContainer extends Component {
@@ -58,7 +59,7 @@ class LecturesContainer extends Component {
     showClassLectureContent = () => {
         // need to add start class session button for students to display real time lecture updates
         console.log(this.state)
-        if(this.props.classSession) {
+        if(this.props.classSession || this.props.joinSession) {
             if(this.props.currentUser.type === "instructor") {
                 return <div>
                     <LectureContentHead
@@ -92,6 +93,16 @@ class LecturesContainer extends Component {
     showLectureInput = () => {
         if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
             return <LectureInput/>
+        } else if(this.props.currentUser.type === "student") {
+            if(this.props.joinSession) {
+                return <JoinClassButton
+                    handleClick={this.handleLeaveClass}
+                    buttonText={"Leave Class"}/>
+            } else {
+                return <JoinClassButton
+                    handleClick={this.handleJoinClass}
+                    buttonText={"Join Class"}/>
+            }
         } else {
             return null
         }
@@ -99,6 +110,14 @@ class LecturesContainer extends Component {
 
     handleClick = id => {
         this.props.displayLectureContent(id)
+    }
+
+    handleJoinClass = () => {
+        this.props.joinClass()
+    }
+
+    handleLeaveClass = () => {
+        this.props.leaveClass()
     }
 
     render() {
@@ -122,13 +141,16 @@ const mapStateToProps = state => {
         currentSubject: state.currentSubject,
         currentLecture: state.currentLecture,
         classSession: state.classSession,
+        joinSession: state.joinSession,
         classLecture: state.classLecture
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        displayLectureContent: (id) => dispatch(displayLectureContent(id))
+        displayLectureContent: (id) => dispatch(displayLectureContent(id)),
+        joinClass: () => dispatch(joinClass()),
+        leaveClass: () => dispatch(leaveClass())
     }
 }
 

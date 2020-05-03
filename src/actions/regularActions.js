@@ -36,3 +36,15 @@ export const clearCurrentState = () => {
         type: 'LOGOUT'
     }
 }
+
+export const joinClass = () => {
+    return {
+        type: 'JOIN_CLASS'
+    }
+}
+
+export const leaveClass = () => {
+    return {
+        type: 'LEAVE_CLASS'
+    }
+}
