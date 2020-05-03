@@ -14,13 +14,15 @@ class LecturesContainer extends Component {
 
         this.state = {
             classLectureTitle: "",
-            classLectureContent: ""
+            classLectureContent: "",
+            classLectureDate: ""
         }
 
         reloadLecture((lec) => {
             this.setState({ 
                 classLectureTitle: lec.attributes.title,
-                classLectureContent: lec.attributes.content
+                classLectureContent: lec.attributes.content,
+                classLectureDate: lec.attributes.created_at
             })
         })
     }
@@ -70,7 +72,7 @@ class LecturesContainer extends Component {
             } else {
                 return <div>
                     <LectureContentHead
-                    date={this.props.classLecture.attributes.created_at.split("T")[0]}
+                    date={this.state.classLectureDate.split("T")[0]}
                     title={this.state.classLectureTitle}/>
                     {this.contentBody(this.state.classLectureContent)}
                 </div>
