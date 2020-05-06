@@ -14,6 +14,7 @@ class LectureInput extends Component {
         if(this.props.classSession) {
             if(this.props.classLecture.attributes.title === "") {
                 return <form onSubmit={event => this.handleSubmit(event)}>
+                    <label>Enter Lecture Title</label><br/>
                     <input name="title"
                            type="text"
                            value={this.state.title}
@@ -22,6 +23,7 @@ class LectureInput extends Component {
                 </form>
             } else {
                 return <form onSubmit={event => this.handleSubmit(event)}>
+                    <label>Enter Lecture Content</label><br/>
                     <textarea name="content"
                               value={this.state.content}
                               onChange={event => this.handleChange(event)}/>
