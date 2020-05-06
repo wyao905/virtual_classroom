@@ -60,7 +60,6 @@ class LecturesContainer extends Component {
 
     showClassLectureContent = () => {
         // need to figure out issue with student class lectures not updating properly
-        console.log(this.state)
         if(this.props.classSession || this.props.joinSession) {
             if(this.props.currentUser.type === "instructor") {
                 return <div>
@@ -124,13 +123,11 @@ class LecturesContainer extends Component {
 
     render() {
         return(
-            <div>
-                <div id="lectures-container">
-                    {this.showLectureButtons()}
-                    {this.showLectureInput()}
-                </div>
-                {this.showLectureContent()}
-                {this.showClassLectureContent()}
+            <div id="lectures-container">
+                <div id="lecture-buttons">{this.showLectureButtons()}</div>
+                {this.showLectureInput()}
+                <div id="lecture">{this.showLectureContent()}</div>
+                <div id="class-lecture">{this.showClassLectureContent()}</div>
             </div>
         )
     }
