@@ -11,7 +11,8 @@ import {initialFetch, checkLogin, signNewUser} from './actions/fetchActions'
 import {clearErrors, clearCurrentState} from './actions/regularActions'
 import Login from './components/login'
 import NewUserForm from './components/newUserForm'
-import Body from './components/body'
+import StudentBody from './components/studentBody'
+import InstructorBody from './components/instructorBody'
 import Error from './components/error'
 
 class App extends Component {
@@ -46,10 +47,10 @@ class App extends Component {
             <NewUserForm signNewUser={this.props.signNewUser}/>
           </Route>
           <Route path="/student">
-            <Body clearCurrentState={this.props.clearCurrentState}/>
+            <StudentBody clearCurrentState={this.props.clearCurrentState}/>
           </Route>
           <Route path="/instructor">
-            <
+            <InstructorBody/>
           </Route>
           <Route path="/">
             <Login checkLogin={this.props.checkLogin}/>
