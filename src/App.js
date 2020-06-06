@@ -45,8 +45,11 @@ class App extends Component {
           <Route path="/signup">
             <NewUserForm signNewUser={this.props.signNewUser}/>
           </Route>
-          <Route path="/user">
+          <Route path="/student">
             <Body clearCurrentState={this.props.clearCurrentState}/>
+          </Route>
+          <Route path="/instructor">
+            <
           </Route>
           <Route path="/">
             <Login checkLogin={this.props.checkLogin}/>
