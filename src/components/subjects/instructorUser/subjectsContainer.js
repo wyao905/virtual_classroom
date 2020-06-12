@@ -7,11 +7,7 @@ import {clearLectureContent, setMessagedTarget} from '../../actions/regularActio
 
 class SubjectsContainer extends Component {
     showNewSubjectForm = () => {
-        if(this.props.currentUser.type === "instructor") {
-            return <SubjectForm currentUser={this.props.currentUser} addSubject={this.props.addSubject}/>
-        } else {
-            return null
-        }
+        return <SubjectForm currentUser={this.props.currentUser} addSubject={this.props.addSubject}/>
     }
 
     showSubjects = () => {
@@ -44,6 +40,7 @@ class SubjectsContainer extends Component {
         )
     }
 }
+
 const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
