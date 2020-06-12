@@ -1,18 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Subject from './subject'
-import SubjectForm from './subjectForm'
+// import SubjectForm from './subjectForm'
 import {loadSubjectInfo, loadMessages, addSubject} from '../../actions/fetchActions'
 import {clearLectureContent, setMessagedTarget} from '../../actions/regularActions'
 
 class SubjectsContainer extends Component {
-    showNewSubjectForm = () => {
-        if(this.props.currentUser.type === "instructor") {
-            return <SubjectForm currentUser={this.props.currentUser} addSubject={this.props.addSubject}/>
-        } else {
-            return null
-        }
-    }
+    // showNewSubjectForm = () => {
+    //     if(this.props.currentUser.type === "instructor") {
+    //         return <SubjectForm currentUser={this.props.currentUser} addSubject={this.props.addSubject}/>
+    //     } else {
+    //         return null
+    //     }
+    // }
 
     showSubjects = () => {
         return this.props.subjects.map(sub => {
@@ -28,22 +28,23 @@ class SubjectsContainer extends Component {
     handleClick = (id) => {
         this.props.loadSubjectInfo(id)
         this.props.clearLectureContent()
-        if(this.props.currentUser.type === "student") {
+        // if(this.props.currentUser.type === "student") {
             this.props.setMessagedTarget(id)
             this.props.loadMessages("students", this.props.currentUser.id)
-        }
+        // }
     }
 
     render() {
         return(
             <div id="subjects-container">
                 <h3>Subjects</h3>
-                {this.showNewSubjectForm()}
+                {/* {this.showNewSubjectForm()} */}
                 {this.showSubjects()}
             </div>
         )
     }
 }
+
 const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
