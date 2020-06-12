@@ -24,10 +24,6 @@ class SubjectsContainer extends Component {
     handleClick = (id) => {
         this.props.loadSubjectInfo(id)
         this.props.clearLectureContent()
-        if(this.props.currentUser.type === "student") {
-            this.props.setMessagedTarget(id)
-            this.props.loadMessages("students", this.props.currentUser.id)
-        }
     }
 
     render() {
