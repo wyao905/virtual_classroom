@@ -29,8 +29,8 @@ class SubjectsContainer extends Component {
         this.props.loadSubjectInfo(id)
         this.props.clearLectureContent()
         // if(this.props.currentUser.type === "student") {
-            this.props.setMessagedTarget(id)
-            this.props.loadMessages("students", this.props.currentUser.id)
+        this.props.setMessagedTarget(id)
+        this.props.loadMessages("students", this.props.currentUser.id)
         // }
     }
 
