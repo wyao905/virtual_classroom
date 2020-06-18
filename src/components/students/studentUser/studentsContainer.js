@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 import Student from './student'
 // import EnrollmentForm from './enrollmentForm'
-import {setMessagedTarget} from '../../actions/regularActions'
-import {loadMessages, addEnrollment} from '../../actions/fetchActions'
+// import {setMessagedTarget} from '../../actions/regularActions'
+// import {loadMessages, addEnrollment} from '../../actions/fetchActions'
 
 class StudentsContainer extends Component {
     showStudents = () => {
@@ -15,7 +15,8 @@ class StudentsContainer extends Component {
                     id={stu.id}
                     name={stu.attributes.name}
                     email={stu.attributes.email}
-                    handleClick={this.handleClick}/>
+                    // handleClick={this.handleClick}
+                    />
             } else {
                 return null
             }
@@ -32,29 +33,30 @@ class StudentsContainer extends Component {
     //     }
     // }
 
-    handleClick = id => {
-        if(this.props.user.type === "instructor") {
-            this.props.setMessagedTarget(id)
-            this.props.loadMessages("instructors", this.props.user.id)
-        }
-    }
+    // handleClick = id => {
+    //     if(this.props.user.type === "instructor") {
+    //         this.props.setMessagedTarget(id)
+    //         this.props.loadMessages("instructors", this.props.user.id)
+    //     }
+    // }
 
     render() {
         return(
             <div>
                 {this.showStudents()}
-                {this.enrollStudent()}
+                {/* {this.enrollStudent()} */}
             </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        setMessagedTarget: (id) => dispatch(setMessagedTarget(id)),
-        loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId)),
-        addEnrollment: (email, subjectId) => dispatch(addEnrollment(email, subjectId))
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         setMessagedTarget: (id) => dispatch(setMessagedTarget(id)),
+//         loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId)),
+//         addEnrollment: (email, subjectId) => dispatch(addEnrollment(email, subjectId))
+//     }
+// }
 
-export default connect(null, mapDispatchToProps)(StudentsContainer)
+// export default connect(null, mapDispatchToProps)(StudentsContainer)
+export default StudentsContainer
