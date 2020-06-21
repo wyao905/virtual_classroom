@@ -33,10 +33,8 @@ class StudentsContainer extends Component {
     }
 
     handleClick = id => {
-        if(this.props.user.type === "instructor") {
-            this.props.setMessagedTarget(id)
-            this.props.loadMessages("instructors", this.props.user.id)
-        }
+        this.props.setMessagedTarget(id)
+        this.props.loadMessages("instructors", this.props.user.id)
     }
 
     render() {
