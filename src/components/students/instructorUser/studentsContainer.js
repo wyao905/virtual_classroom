@@ -23,7 +23,7 @@ class StudentsContainer extends Component {
     }
 
     enrollStudent = () => {
-        if(this.props.user.type === "instructor" && !!this.props.subject.id) {
+        if(!!this.props.subject.id) {
             return <EnrollmentForm
                 addEnrollment={this.props.addEnrollment}
                 subject={this.props.subject}/>
