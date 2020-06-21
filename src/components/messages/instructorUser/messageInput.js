@@ -10,13 +10,13 @@ class MessageInput extends Component {
     showForm = () => {
         let target
         let targetSub
-        if(this.props.currentUser.type === "student") {
-            targetSub = this.props.subjects.find(sub => sub.id === this.props.messagedTarget)
-            target = this.props.instructors.find(ins => ins.id === targetSub.relationships.instructor.data.id)
-        } else {
-            target = this.props.students.find(stu => stu.id === this.props.messagedTarget)
-            targetSub = this.props.currentSubject
-        }
+        // if(this.props.currentUser.type === "student") {
+        //     targetSub = this.props.subjects.find(sub => sub.id === this.props.messagedTarget)
+        //     target = this.props.instructors.find(ins => ins.id === targetSub.relationships.instructor.data.id)
+        // } else {
+        target = this.props.students.find(stu => stu.id === this.props.messagedTarget)
+        targetSub = this.props.currentSubject
+        // }
         return <form onSubmit={event => this.handleSubmit(event)}>
             <div>
                 To: {target.attributes.name} <br/>
@@ -39,15 +39,15 @@ class MessageInput extends Component {
     handleSubmit = event => {
         event.preventDefault()
         let newMessage = this.state
-        if(this.props.currentUser.type === "student") {
-            newMessage.sender = "student"
-            newMessage.student = this.props.currentUser.id
-            newMessage.instructor = this.props.currentSubject.relationships.instructor.data.id
-        } else {
-            newMessage.sender = "instructor"
-            newMessage.student = this.props.messagedTarget
-            newMessage.instructor = this.props.currentUser.id
-        }
+        // if(this.props.currentUser.type === "student") {
+        //     newMessage.sender = "student"
+        //     newMessage.student = this.props.currentUser.id
+        //     newMessage.instructor = this.props.currentSubject.relationships.instructor.data.id
+        // } else {
+        newMessage.sender = "instructor"
+        newMessage.student = this.props.messagedTarget
+        newMessage.instructor = this.props.currentUser.id
+        // }
         newMessage.subject = this.props.currentSubject.id
         this.props.addMessage(newMessage)
         this.setState({
