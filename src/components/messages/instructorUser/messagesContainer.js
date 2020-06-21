@@ -31,12 +31,12 @@ class MessagesContainer extends Component {
             if(displayMessages.length > 0) {
                 let sorted = displayMessages.sort((a, b) => (a.created_at < b.created_at) ? 1 : -1)
                 return sorted.map(msg => {
-                    let origin = "Received from: "
-                    // if(msg.attributes.sender === "instructor") {
-                    //     origin = "Sent to: "
-                    // } else {
-                    //     origin = "Received from: "
-                    // }
+                    let origin
+                    if(msg.attributes.sender === "instructor") {
+                        origin = "Sent to: "
+                    } else {
+                        origin = "Received from: "
+                    }
                     return <ul><Message
                         origin={origin}
                         content={msg.attributes.content}
