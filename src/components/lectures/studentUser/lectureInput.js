@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addLecture, updateClassLecture} from '../../actions/fetchActions'
-import {endClass} from '../../actions/regularActions'
+import {addLecture, updateClassLecture} from '../../../actions/fetchActions'
+import {endClass} from '../../../actions/regularActions'
 
 
 class LectureInput extends Component {

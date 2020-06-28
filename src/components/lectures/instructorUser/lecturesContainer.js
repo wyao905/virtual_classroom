@@ -5,8 +5,8 @@ import JoinClassButton from './joinClassButton'
 import LectureContent from './lectureContent'
 import LectureContentHead from './lectureContentHead'
 import LectureInput from './lectureInput'
-import {displayLectureContent, joinClass, leaveClass} from '../../actions/regularActions'
-import {reloadLecture} from '../../api'
+import {displayLectureContent, joinClass, leaveClass} from '../../../actions/regularActions'
+import {reloadLecture} from '../../../api'
 
 class LecturesContainer extends Component {
     constructor(props) {
