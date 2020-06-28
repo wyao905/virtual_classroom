@@ -61,25 +61,25 @@ class LecturesContainer extends Component {
         })
     }
 
-
+    //shows the ongoing class lecture content
     showClassLectureContent = () => {
         // need to figure out issue with student class lectures not updating properly
-        if(this.props.classSession || this.props.joinSession) {
-            if(this.props.currentUser.type === "instructor") {
-                return <div>
-                    <LectureContentHead
-                    date={this.props.classLecture.attributes.created_at.split("T")[0]}
-                    title={this.props.classLecture.attributes.title}/>
-                    {this.contentBody(this.props.classLecture.attributes.content)}
-                </div>
-            } else {
-                return <div>
-                    <LectureContentHead
-                    date={this.state.classLectureDate.split("T")[0]}
-                    title={this.state.classLectureTitle}/>
-                    {this.contentBody(this.state.classLectureContent)}
-                </div>
-            }
+        if(this.props.joinSession) {
+            // if(this.props.currentUser.type === "instructor") {
+            //     return <div>
+            //         <LectureContentHead
+            //         date={this.props.classLecture.attributes.created_at.split("T")[0]}
+            //         title={this.props.classLecture.attributes.title}/>
+            //         {this.contentBody(this.props.classLecture.attributes.content)}
+            //     </div>
+            // } else {
+            return <div>
+                <LectureContentHead
+                date={this.state.classLectureDate.split("T")[0]}
+                title={this.state.classLectureTitle}/>
+                {this.contentBody(this.state.classLectureContent)}
+            </div>
+            // }
         } else {
             return null
         }
@@ -150,7 +150,7 @@ const mapStateToProps = state => {
         currentUser: state.currentUser,
         currentSubject: state.currentSubject,
         currentLecture: state.currentLecture,
-        classSession: state.classSession,
+        // classSession: state.classSession,
         joinSession: state.joinSession,
         classLecture: state.classLecture
     }

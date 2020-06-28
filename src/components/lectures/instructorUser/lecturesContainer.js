@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LectureButtons from './lectureButtons'
-import JoinClassButton from './joinClassButton'
+// import JoinClassButton from './joinClassButton'
 import LectureContent from './lectureContent'
 import LectureContentHead from './lectureContentHead'
 import LectureInput from './lectureInput'
-import {displayLectureContent, joinClass, leaveClass} from '../../../actions/regularActions'
+import {displayLectureContent} from '../../../actions/regularActions'
 import {reloadLecture} from '../../../api'
 
 class LecturesContainer extends Component {
@@ -27,7 +27,7 @@ class LecturesContainer extends Component {
         })
     }
     
-
+    //filters through lectures in store and show lecture button if the lecture's subject id matches the current subject id
     showLectureButtons = () => {
         return this.props.lectures.map(lec => {
             if(lec.relationships.subject.data.id === this.props.currentSubject.id) {
@@ -43,6 +43,8 @@ class LecturesContainer extends Component {
         })
     }
 
+    //filters through lectures in store and shows lecture content if the lecture's id matches the current lecture id
+    //calls contentBody function to ensure newline spaces are properly displayed
     showLectureContent = () => {
         return this.props.lectures.map(lec => {
             if(this.props.currentLecture === lec.id) {
@@ -58,29 +60,32 @@ class LecturesContainer extends Component {
         })
     }
 
+    //shows the ongoing class lecture content
     showClassLectureContent = () => {
         // need to figure out issue with student class lectures not updating properly
-        if(this.props.classSession || this.props.joinSession) {
-            if(this.props.currentUser.type === "instructor") {
-                return <div>
-                    <LectureContentHead
-                    date={this.props.classLecture.attributes.created_at.split("T")[0]}
-                    title={this.props.classLecture.attributes.title}/>
-                    {this.contentBody(this.props.classLecture.attributes.content)}
-                </div>
-            } else {
-                return <div>
-                    <LectureContentHead
-                    date={this.state.classLectureDate.split("T")[0]}
-                    title={this.state.classLectureTitle}/>
-                    {this.contentBody(this.state.classLectureContent)}
-                </div>
-            }
+        if(this.props.classSession) {
+            // if(this.props.currentUser.type === "instructor") {
+            return <div>
+                <LectureContentHead
+                date={this.props.classLecture.attributes.created_at.split("T")[0]}
+                title={this.props.classLecture.attributes.title}/>
+                {this.contentBody(this.props.classLecture.attributes.content)}
+            </div>
+            // } else {
+            //     return <div>
+            //         <LectureContentHead
+            //         date={this.state.classLectureDate.split("T")[0]}
+            //         title={this.state.classLectureTitle}/>
+            //         {this.contentBody(this.state.classLectureContent)}
+            //     </div>
+            // }
         } else {
             return null
         }
     }
 
+    //function needed for preserving newline spaces in lecture content display
+    //lectureContent is stored as an array with each array entry as a paragraph
     contentBody = (lectureContent) => {
         if(Array.isArray(lectureContent)) {
             return lectureContent.map(content => {
@@ -91,35 +96,37 @@ class LecturesContainer extends Component {
         }
     }
 
+    //shows the lecture input component for instructors
     showLectureInput = () => {
-        if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
+        if(this.props.currentSubject.id !== undefined) {
             return <LectureInput/>
-        } else if(this.props.currentUser.type === "student") {
-            if(this.props.joinSession) {
-                return <JoinClassButton
-                    handleClick={this.handleLeaveClass}
-                    buttonText={"Leave Class"}/>
-            } else {
-                return <JoinClassButton
-                    handleClick={this.handleJoinClass}
-                    buttonText={"Join Class"}/>
-            }
+        // } else if(this.props.currentUser.type === "student") {
+        //     if(this.props.joinSession) {
+        //         return <JoinClassButton
+        //             handleClick={this.handleLeaveClass}
+        //             buttonText={"Leave Class"}/>
+        //     } else {
+        //         return <JoinClassButton
+        //             handleClick={this.handleJoinClass}
+        //             buttonText={"Join Class"}/>
+        //     }
         } else {
             return null
         }
     }
 
+    //displays lecture content when lecture is clicked
     handleClick = id => {
         this.props.displayLectureContent(id)
     }
 
-    handleJoinClass = () => {
-        this.props.joinClass()
-    }
+    // handleJoinClass = () => {
+    //     this.props.joinClass()
+    // }
 
-    handleLeaveClass = () => {
-        this.props.leaveClass()
-    }
+    // handleLeaveClass = () => {
+    //     this.props.leaveClass()
+    // }
 
     render() {
         return(
@@ -140,16 +147,16 @@ const mapStateToProps = state => {
         currentSubject: state.currentSubject,
         currentLecture: state.currentLecture,
         classSession: state.classSession,
-        joinSession: state.joinSession,
+        // joinSession: state.joinSession,
         classLecture: state.classLecture
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        displayLectureContent: (id) => dispatch(displayLectureContent(id)),
-        joinClass: () => dispatch(joinClass()),
-        leaveClass: () => dispatch(leaveClass())
+        displayLectureContent: (id) => dispatch(displayLectureContent(id))
+        // joinClass: () => dispatch(joinClass()),
+        // leaveClass: () => dispatch(leaveClass())
     }
 }
 
