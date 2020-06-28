@@ -18,6 +18,7 @@ class LecturesContainer extends Component {
             classLectureDate: ""
         }
 
+        //sends component state to socket
         reloadLecture((lec) => {
             this.setState({ 
                 classLectureTitle: lec.attributes.title,
@@ -27,7 +28,7 @@ class LecturesContainer extends Component {
         })
     }
     
-
+    //filters through lectures in store and show lecture button if the lecture's subject id matches the current subject id
     showLectureButtons = () => {
         return this.props.lectures.map(lec => {
             if(lec.relationships.subject.data.id === this.props.currentSubject.id) {
@@ -43,6 +44,8 @@ class LecturesContainer extends Component {
         })
     }
 
+    //filters through lectures in store and shows lecture content if the lecture's id matches the current lecture id
+    //calls contentBody function to ensure newline spaces are properly displayed
     showLectureContent = () => {
         return this.props.lectures.map(lec => {
             if(this.props.currentLecture === lec.id) {
@@ -51,12 +54,13 @@ class LecturesContainer extends Component {
                         date={lec.attributes.created_at.split("T")[0]}
                         title={lec.attributes.title}/>
                     {this.contentBody(lec.attributes.content)}
-                    </div>
+                </div>
             } else {
                 return null
             }
         })
     }
+
 
     showClassLectureContent = () => {
         // need to figure out issue with student class lectures not updating properly
@@ -81,6 +85,8 @@ class LecturesContainer extends Component {
         }
     }
 
+    //function needed for preserving newline spaces in lecture content display
+    //lectureContent is stored as an array with each array entry as a paragraph
     contentBody = (lectureContent) => {
         if(Array.isArray(lectureContent)) {
             return lectureContent.map(content => {
@@ -91,32 +97,37 @@ class LecturesContainer extends Component {
         }
     }
 
+    //shows the join class button for students
     showLectureInput = () => {
-        if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
-            return <LectureInput/>
-        } else if(this.props.currentUser.type === "student") {
-            if(this.props.joinSession) {
-                return <JoinClassButton
-                    handleClick={this.handleLeaveClass}
-                    buttonText={"Leave Class"}/>
-            } else {
-                return <JoinClassButton
-                    handleClick={this.handleJoinClass}
-                    buttonText={"Join Class"}/>
-            }
+        // if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
+        //     return <LectureInput/>
+        // } else
+        // if(this.props.currentUser.type === "student") {
+        if(this.props.joinSession) {
+            return <JoinClassButton
+                handleClick={this.handleLeaveClass}
+                buttonText={"Leave Class"}/>
         } else {
-            return null
+            return <JoinClassButton
+                handleClick={this.handleJoinClass}
+                buttonText={"Join Class"}/>
         }
+        // } else {
+        //     return null
+        // }
     }
 
+    //displays lecture content when lecture is clicked
     handleClick = id => {
         this.props.displayLectureContent(id)
     }
 
+    //sets store state joinSession to true indicating student user is in class
     handleJoinClass = () => {
         this.props.joinClass()
     }
 
+    //sets store state joinSession to false indicating student user is not in class
     handleLeaveClass = () => {
         this.props.leaveClass()
     }
