@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Student from './student'
 import EnrollmentForm from './enrollmentForm'
-import {setMessagedTarget} from '../../actions/regularActions'
-import {loadMessages, addEnrollment} from '../../actions/fetchActions'
+import {setMessagedTarget} from '../../../actions/regularActions'
+import {loadMessages, addEnrollment} from '../../../actions/fetchActions'
 
 class StudentsContainer extends Component {
     showStudents = () => {

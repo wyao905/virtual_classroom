@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import SubjectsContainer from './subjects/studentUser/subjectsContainer'
 import LecturesContainer from './lectures/lecturesContainer'
 import StudentsContainer from './students/studentUser/studentsContainer'
-import MessagesContainer from './messages/messagesContainer'
+import MessagesContainer from './messages/studentUser/messagesContainer'
 
 class Body extends Component {
     render() {

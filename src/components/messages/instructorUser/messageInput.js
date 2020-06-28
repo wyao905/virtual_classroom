@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addMessage} from '../../actions/fetchActions'
+import {addMessage} from '../../../actions/fetchActions'
 
 class MessageInput extends Component {
     state = {
