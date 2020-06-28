@@ -10,6 +10,7 @@ class LectureInput extends Component {
         content: ""
     }
 
+    //lecture input form
     lectureInput = () => {
         if(this.props.classSession) {
             if(this.props.classLecture.attributes.title === "") {
@@ -35,6 +36,7 @@ class LectureInput extends Component {
         }
     }
 
+    //button to start and end class session
     classSessionButtons = () => {
         if(this.props.classSession) {
             return <button className="session-button" onClick={this.handleEndClass}>End Class</button>
@@ -43,12 +45,14 @@ class LectureInput extends Component {
         }
     }
 
+    //updates component state with form input values
     handleChange = event => {
         let newStateProp = {}
         newStateProp[event.target.name] = event.target.value
         this.setState(newStateProp)
     }
 
+    //sends form input values to api through updateClassLecture fetch action
     handleSubmit = event => {
         event.preventDefault()
         this.props.updateClassLecture(this.state, this.props.classLecture.id)
@@ -58,6 +62,7 @@ class LectureInput extends Component {
         })
     }
 
+    //sends newLecture object to addLecture action
     handleStartClass = () => {
         let newLecture = this.state
         newLecture.subject_id = this.props.currentSubject.id
@@ -67,6 +72,7 @@ class LectureInput extends Component {
         })
     }
 
+    //sets store state for class session to false
     handleEndClass = () => {
         this.props.endClass()
         this.setState({
