@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from "react-router-dom"
 import SubjectsContainer from './subjects/studentUser/subjectsContainer'
-import LecturesContainer from './lectures/lecturesContainer'
+import LecturesContainer from './lectures/studentUser/lecturesContainer'
 import StudentsContainer from './students/studentUser/studentsContainer'
 import MessagesContainer from './messages/studentUser/messagesContainer'
 

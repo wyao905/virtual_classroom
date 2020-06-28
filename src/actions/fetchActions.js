@@ -39,7 +39,6 @@ export const checkLogin = (user, history) => {
                     dispatch({type: 'ADD_SUBJECTS', subjects: subjects})
                     dispatch({type: 'ADD_MESSAGES', messages: messages})
                     dispatch({type: 'LOADING_DONE'})
-                    console.log(verifiedUser.data.type)
                     if(verifiedUser.data.type === "student") {
                         history.push('/student')
                     } else {
