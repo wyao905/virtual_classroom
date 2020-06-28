@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Subject from './subject'
+import Subject from '../subject'
 import SubjectForm from './subjectForm'
 import {loadSubjectInfo, loadMessages, addSubject} from '../../../actions/fetchActions'
 import {clearLectureContent, setMessagedTarget} from '../../../actions/regularActions'
