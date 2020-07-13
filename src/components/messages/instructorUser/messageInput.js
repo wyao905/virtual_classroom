@@ -7,6 +7,7 @@ class MessageInput extends Component {
         content: ""
     }
 
+    //displays new comment form and auto sets comment target's name, email, and comment subject
     showForm = () => {
         let target
         let targetSub
@@ -30,6 +31,7 @@ class MessageInput extends Component {
         </form>
     }
 
+    //updates message content state with user input
     handleChange = event => {
         this.setState({
             content: event.target.value

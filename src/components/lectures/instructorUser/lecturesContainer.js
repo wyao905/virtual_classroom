@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LectureButtons from '../lectureButtons'
-// import JoinClassButton from './joinClassButton'
 import LectureContent from '../lectureContent'
 import LectureContentHead from '../lectureContentHead'
 import LectureInput from './lectureInput'
@@ -64,21 +63,12 @@ class LecturesContainer extends Component {
     showClassLectureContent = () => {
         // need to figure out issue with student class lectures not updating properly
         if(this.props.classSession) {
-            // if(this.props.currentUser.type === "instructor") {
             return <div>
                 <LectureContentHead
                 date={this.props.classLecture.attributes.created_at.split("T")[0]}
                 title={this.props.classLecture.attributes.title}/>
                 {this.contentBody(this.props.classLecture.attributes.content)}
             </div>
-            // } else {
-            //     return <div>
-            //         <LectureContentHead
-            //         date={this.state.classLectureDate.split("T")[0]}
-            //         title={this.state.classLectureTitle}/>
-            //         {this.contentBody(this.state.classLectureContent)}
-            //     </div>
-            // }
         } else {
             return null
         }
@@ -100,16 +90,6 @@ class LecturesContainer extends Component {
     showLectureInput = () => {
         if(this.props.currentSubject.id !== undefined) {
             return <LectureInput/>
-        // } else if(this.props.currentUser.type === "student") {
-        //     if(this.props.joinSession) {
-        //         return <JoinClassButton
-        //             handleClick={this.handleLeaveClass}
-        //             buttonText={"Leave Class"}/>
-        //     } else {
-        //         return <JoinClassButton
-        //             handleClick={this.handleJoinClass}
-        //             buttonText={"Join Class"}/>
-        //     }
         } else {
             return null
         }
@@ -119,14 +99,6 @@ class LecturesContainer extends Component {
     handleClick = id => {
         this.props.displayLectureContent(id)
     }
-
-    // handleJoinClass = () => {
-    //     this.props.joinClass()
-    // }
-
-    // handleLeaveClass = () => {
-    //     this.props.leaveClass()
-    // }
 
     render() {
         return(
@@ -147,7 +119,6 @@ const mapStateToProps = state => {
         currentSubject: state.currentSubject,
         currentLecture: state.currentLecture,
         classSession: state.classSession,
-        // joinSession: state.joinSession,
         classLecture: state.classLecture
     }
 }
@@ -155,8 +126,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         displayLectureContent: (id) => dispatch(displayLectureContent(id))
-        // joinClass: () => dispatch(joinClass()),
-        // leaveClass: () => dispatch(leaveClass())
     }
 }
 
