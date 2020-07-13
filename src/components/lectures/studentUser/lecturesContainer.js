@@ -4,7 +4,6 @@ import LectureButtons from '../lectureButtons'
 import JoinClassButton from './joinClassButton'
 import LectureContent from '../lectureContent'
 import LectureContentHead from '../lectureContentHead'
-// import LectureInput from './lectureInput'
 import {displayLectureContent, joinClass, leaveClass} from '../../../actions/regularActions'
 import {reloadLecture} from '../../../api'
 
@@ -65,21 +64,12 @@ class LecturesContainer extends Component {
     showClassLectureContent = () => {
         // need to figure out issue with student class lectures not updating properly
         if(this.props.joinSession) {
-            // if(this.props.currentUser.type === "instructor") {
-            //     return <div>
-            //         <LectureContentHead
-            //         date={this.props.classLecture.attributes.created_at.split("T")[0]}
-            //         title={this.props.classLecture.attributes.title}/>
-            //         {this.contentBody(this.props.classLecture.attributes.content)}
-            //     </div>
-            // } else {
             return <div>
                 <LectureContentHead
                 date={this.state.classLectureDate.split("T")[0]}
                 title={this.state.classLectureTitle}/>
                 {this.contentBody(this.state.classLectureContent)}
             </div>
-            // }
         } else {
             return null
         }
@@ -99,10 +89,6 @@ class LecturesContainer extends Component {
 
     //shows the join class button for students
     showLectureInput = () => {
-        // if(this.props.currentUser.type === "instructor" && this.props.currentSubject.id !== undefined) {
-        //     return <LectureInput/>
-        // } else
-        // if(this.props.currentUser.type === "student") {
         if(this.props.joinSession) {
             return <JoinClassButton
                 handleClick={this.handleLeaveClass}
@@ -112,9 +98,6 @@ class LecturesContainer extends Component {
                 handleClick={this.handleJoinClass}
                 buttonText={"Join Class"}/>
         }
-        // } else {
-        //     return null
-        // }
     }
 
     //displays lecture content when lecture is clicked
@@ -150,7 +133,6 @@ const mapStateToProps = state => {
         currentUser: state.currentUser,
         currentSubject: state.currentSubject,
         currentLecture: state.currentLecture,
-        // classSession: state.classSession,
         joinSession: state.joinSession,
         classLecture: state.classLecture
     }
