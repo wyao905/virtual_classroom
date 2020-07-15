@@ -40,11 +40,13 @@ class NewUserForm extends Component {
             <div>
                 <div className="nav-link"><Link to="/">Home</Link></div>
                 <form id="create-form" onSubmit={event => this.handleSubmit(event)}>
-                    <label>Name:</label>
+                    <label>Name:</label><br/>
                     <input className="input-text" name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>
-                    <label>Email:</label>
+                    <br/>
+                    <label>Email:</label><br/>
                     <input className="input-text" name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
-                    <label>Password:</label>
+                    <br/>
+                    <label>Password:</label><br/>
                     <input className="input-text" name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
                     <br/>
                     <label>Login as student or instructor: </label>

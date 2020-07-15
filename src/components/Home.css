@@ -11,17 +11,27 @@ a:link, a:visited, a:hover, a:active {
 }
 
 #login-form {
-    margin: 1em;
+    margin: 2em;
+    padding: 2em;
+    border: rgb(39, 190, 228) solid 0.125em;
+    border-radius: 2em;
+    width: 40em;
 }
 
 #create-form {
-    margin: 1em;
+    margin: 2em;
+    padding: 2em;
+    border: rgb(39, 190, 228) solid 0.125em;
+    border-radius: 2em;
+    width: 40em;
 }
 
 .select {
+    border: rgb(39, 190, 228);
+    color: rgb(39, 190, 228);
     width: 20em;
 }
 
 .input-text {
-    margin: 0em 0.5em 1em;
+    margin: 0em 0em 1em;
 }

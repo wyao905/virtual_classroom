@@ -38,9 +38,10 @@ class Login extends Component {
             <div>
                 <div className="nav-link"><Link to="/signup">SignUp</Link></div>
                 <form id="login-form" onSubmit={event => this.handleSubmit(event)}>
-                    <label>Email:</label>
+                    <label>Email:</label><br/>
                     <input className="input-text" name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
-                    <label>Password:</label>
+                    <br/>
+                    <label>Password:</label><br/>
                     <input className="input-text" name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
                     <br/>
                     <label>Login as student or instructor: </label>
