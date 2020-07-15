@@ -1,21 +1,27 @@
 .nav-link {
-  margin: 1em;
-  background-color: rgb(39, 190, 228);
-  width: 100%
+    background-color: rgb(39, 190, 228);
+    height: 2em;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: white;
+    margin: 1em;
+    vertical-align: middle;
+    text-decoration: none;
 }
 
 #login-form {
-  margin: 1em;
+    margin: 1em;
 }
 
 #create-form {
-  margin: 1em;
+    margin: 1em;
 }
 
 .select {
-  width: 20em;
+    width: 20em;
 }
 
 .input-text {
-  margin: 0em 0.5em 1em;
+    margin: 0em 0.5em 1em;
 }
