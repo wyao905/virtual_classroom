@@ -36,7 +36,7 @@ class Login extends Component {
     render() {
         return(
             <div>
-                <Link to="/signup" className="nav-link">SignUp</Link>
+                <div className="nav-link"><Link to="/signup">SignUp</Link></div>
                 <form id="login-form" onSubmit={event => this.handleSubmit(event)}>
                     <label>Email:</label>
                     <input className="input-text" name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>

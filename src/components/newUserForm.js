@@ -38,7 +38,7 @@ class NewUserForm extends Component {
     render() {
         return(
             <div>
-                <Link className="nav-link" to="/">Home</Link>
+                <div className="nav-link"><Link to="/">Home</Link></div>
                 <form id="create-form" onSubmit={event => this.handleSubmit(event)}>
                     <label>Name:</label>
                     <input className="input-text" name="name" type='text' value={this.state.name} onChange={event => this.handleChange(event)}/>

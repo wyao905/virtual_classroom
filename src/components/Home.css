@@ -1,5 +1,7 @@
 .nav-link {
   margin: 1em;
+  background-color: rgb(39, 190, 228);
+  width: 100%
 }
 
 #login-form {
