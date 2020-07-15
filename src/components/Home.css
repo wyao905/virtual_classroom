@@ -1,0 +1,19 @@
+.nav-link {
+  margin: 1em;
+}
+
+#login-form {
+  margin: 1em;
+}
+
+#create-form {
+  margin: 1em;
+}
+
+.select {
+  width: 20em;
+}
+
+.input-text {
+  margin: 0em 0.5em 1em;
+}
