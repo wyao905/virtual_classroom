@@ -58,6 +58,10 @@ class NewUserForm extends Component {
                             {value: 'student', label: 'Student'},
                             {value: 'instructor', label: 'Instructor'}
                         ]}
+                        theme={(theme) => ({
+                            ...theme,
+                            borderRadius: 0
+                        })}
                     />
                     <br/>
                     <input type="submit" value="Create" />

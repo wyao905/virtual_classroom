@@ -5,12 +5,15 @@
 
 a:link, a:visited, a:hover, a:active {
     color: white;
+    font-weight: 500;
     margin: 1em;
     vertical-align: middle;
     text-decoration: none;
 }
 
 #login-form {
+    color: rgb(39, 190, 228);
+    font-weight: 500;
     margin: 2em;
     padding: 2em;
     border: rgb(39, 190, 228) solid 0.125em;
@@ -19,6 +22,8 @@ a:link, a:visited, a:hover, a:active {
 }
 
 #create-form {
+    color: rgb(39, 190, 228);
+    font-weight: 500;
     margin: 2em;
     padding: 2em;
     border: rgb(39, 190, 228) solid 0.125em;
@@ -34,4 +39,6 @@ a:link, a:visited, a:hover, a:active {
 
 .input-text {
     margin: 0em 0em 1em;
+    opacity: 50%;
+    color: rgb(39, 190, 228);
 }
