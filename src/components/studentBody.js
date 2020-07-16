@@ -10,7 +10,7 @@ class Body extends Component {
     render() {
         return(
             <div>
-                <Link className="nav-link" to="/" onClick={() => this.props.clearCurrentState()}>Logout</Link>
+                <div className="nav-link"><Link to="/" onClick={() => this.props.clearCurrentState()}>Logout</Link></div>
                 <div id="body">
                     <SubjectsContainer/>
                     <LecturesContainer/>

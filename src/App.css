@@ -1,3 +1,80 @@
+.errors {
+  color: red;
+  list-style-type: none;
+  font-size: 12px;
+}
+
+.nav-link {
+  background-color: rgb(39, 190, 228);
+  height: 2em;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: white;
+  font-weight: 500;
+  margin: 1em;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+
+
+
+
+/* login and create user page */
+#login-form {
+  color: rgb(39, 190, 228);
+  font-weight: 500;
+  margin: 2em;
+  padding: 2em;
+  border: rgb(39, 190, 228) solid 0.125em;
+  border-radius: 2em;
+  width: 40em;
+}
+
+#create-form {
+  color: rgb(39, 190, 228);
+  font-weight: 500;
+  margin: 2em;
+  padding: 2em;
+  border: rgb(39, 190, 228) solid 0.125em;
+  border-radius: 2em;
+  width: 40em;
+}
+
+.select {
+  width: 20em;
+}
+
+.input-text {
+  margin: 0em 0em 1em;
+  opacity: 50%;
+}
+
+.form-submit {
+  width: 7em;
+  height: 2em;
+  background-color: rgb(39, 190, 228);
+  color: rgb(255,255, 255);
+  border: rgb(39, 190, 228) solid 0.125em;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  background-color: rgb(88, 209, 240);
+  border: rgb(88, 209, 240);
+}
+
+.form-submit:active {
+  background-color: rgb(13, 158, 194);
+  border: none;
+}
+
+
+
+
+
+/*  */
 #body {
   margin: 1em;
 }

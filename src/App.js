@@ -56,7 +56,7 @@ class App extends Component {
             <Login checkLogin={this.props.checkLogin}/>
           </Route>
         </Switch>
-        <ul>{this.showErrors()}</ul>
+        <ul className="errors">{this.showErrors()}</ul>
       </Router>
     )
   }
