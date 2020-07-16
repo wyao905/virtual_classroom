@@ -32,13 +32,29 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .select {
-    border: rgb(39, 190, 228);
-    color: rgb(39, 190, 228);
     width: 20em;
 }
 
 .input-text {
     margin: 0em 0em 1em;
     opacity: 50%;
-    color: rgb(39, 190, 228);
+}
+
+.form-submit {
+    width: 7em;
+    height: 2em;
+    background-color: rgb(39, 190, 228);
+    color: rgb(255,255, 255);
+    border: rgb(39, 190, 228) solid 0.125em;
+    border-radius: 5px;
+}
+
+.form-submit:hover {
+    background-color: rgb(88, 209, 240);
+    border: rgb(88, 209, 240);
+}
+
+.form-submit:active {
+    background-color: rgb(13, 158, 194);
+    border: none;
 }

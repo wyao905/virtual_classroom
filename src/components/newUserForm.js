@@ -64,7 +64,7 @@ class NewUserForm extends Component {
                         })}
                     />
                     <br/>
-                    <input type="submit" value="Create" />
+                    <input className="form-submit" type="submit" value="Create" />
                 </form>
             </div>
         )

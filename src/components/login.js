@@ -38,13 +38,13 @@ class Login extends Component {
             <div>
                 <div className="nav-link"><Link to="/signup">SignUp</Link></div>
                 <form id="login-form" onSubmit={event => this.handleSubmit(event)}>
-                    <label>Email:</label><br/>
+                    <label>Email</label><br/>
                     <input className="input-text" name="email" type='text' value={this.state.email} onChange={event => this.handleChange(event)}/>
                     <br/>
-                    <label>Password:</label><br/>
+                    <label>Password</label><br/>
                     <input className="input-text" name="password" type='password' value={this.state.password} onChange={event => this.handleChange(event)}/>
                     <br/>
-                    <label>Login as student or instructor: </label>
+                    <label>Login as student or instructor</label>
                     <Select
                         className="select"
                         label={this.state.userSelectOption}
@@ -53,13 +53,13 @@ class Login extends Component {
                             {value: 'student', label: 'Student'},
                             {value: 'instructor', label: 'Instructor'}
                         ]}
-                        theme={(theme) => ({
+                        theme={theme => ({
                             ...theme,
                             borderRadius: 0
                         })}
                     />
                     <br/>
-                    <input type="submit" value="Login"/>
+                    <input className="form-submit" type="submit" value="Login"/>
                 </form>
             </div>
         )
