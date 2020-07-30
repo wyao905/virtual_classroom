@@ -50,7 +50,7 @@ class App extends Component {
             <StudentBody clearCurrentState={this.props.clearCurrentState}/>
           </Route>
           <Route path="/instructor">
-            <InstructorBody/>
+            <InstructorBody clearCurrentState={this.props.clearCurrentState}/>
           </Route>
           <Route path="/">
             <Login checkLogin={this.props.checkLogin}/>
