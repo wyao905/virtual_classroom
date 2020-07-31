@@ -74,7 +74,7 @@ a:link, a:visited, a:hover, a:active {
 
 
 
-/*  */
+/* subjects and lectures container */
 #body {
   margin: 1em;
 }
@@ -82,9 +82,11 @@ a:link, a:visited, a:hover, a:active {
 #subjects-container {
   margin: 1em 0em 0em 0em;
   font-size: 20px;
-  color: rgb(39, 190, 228);
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 1em;
+  padding: 0.05em 0em 1em 0em;
+  background-color: rgb(11, 127, 156);
+  border-bottom: solid 0.5em rgb(150, 150, 150);
 }
 
 .subject-button {
@@ -112,6 +114,7 @@ a:link, a:visited, a:hover, a:active {
 .lecture-button {
   width: 100%;
   height: 3em;
+  font-size: 15px;
   background-color: rgb(39, 190, 228);
   color: rgb(255,255, 255);
   border: none;
@@ -128,36 +131,61 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .lecture {
+  width: 12em;
   color: rgb(255, 255, 255);
   font-weight: 500;
+  font-size: 15px;
   border-bottom: 3px solid rgb(255, 255, 255);
   background-color: rgb(11, 127, 156);
 }
 
 #lectures-container {
   display: flex;
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(147, 207, 223);
   text-align: center;
   padding: 1em;
   min-height: 30em;
 }
 
 .session-button {
-  width: 13em;
-  height: 3em;
-  margin: 0.5em;
+  margin: 0.5em 0em;
+  width: 100%;
+  height: 5em;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 550;
+  background-color: rgb(39, 190, 228);
+  outline: none;
+  border: none;
+}
+
+.session-button:hover {
+  background-color: rgb(88, 209, 240);
+  border: rgb(88, 209, 240);
+}
+
+.session-button:active {
+  background-color: rgb(13, 158, 194);
 }
 
 #lecture {
   background-color: rgb(255, 255, 255);
   width: 35em;
-  margin: 0.5em;
+  margin: 0em 0.5em 0em 1em;
   width: 40%;
+  border: solid 0.5em rgb(150, 150, 150);
 }
 
 #class-lecture {
   background-color: rgb(255, 255, 255);
   width: 35em;
-  margin: 0.5em;
+  margin: 0em 0em 0em 0.5em;
   width: 40%;
+  border: solid 0.5em rgb(150, 150, 150);
 }
+
+
+
+
+
+/* comments section */

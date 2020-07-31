@@ -118,8 +118,10 @@ class LecturesContainer extends Component {
     render() {
         return(
             <div id="lectures-container">
-                <div id="lecture-buttons">{this.showLectureButtons()}</div>
-                {this.showLectureInput()}
+                <div id="lecture-buttons">
+                    {this.showLectureButtons()}
+                    {this.showLectureInput()}
+                </div>
                 <div id="lecture">{this.showLectureContent()}</div>
                 <div id="class-lecture">{this.showClassLectureContent()}</div>
             </div>
