@@ -81,7 +81,8 @@ a:link, a:visited, a:hover, a:active {
 
 #subjects-container {
   margin: 1em 0em 0em 0em;
-  border-bottom: rgb(155, 155, 155) solid 0.5em;
+  font-size: 20px;
+  color: rgb(39, 190, 228);
   text-align: center;
   padding: 1em;
 }
@@ -89,7 +90,23 @@ a:link, a:visited, a:hover, a:active {
 .subject-button {
   margin: 0px 5px 0px 0px;
   width: 10em;
-  height: 2em;
+  height: 3em;
+  font-size: 15px;
+  font-weight: 550;
+  background-color: rgb(39, 190, 228);
+  color: rgb(255,255, 255);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.subject-button:hover {
+  background-color: rgb(88, 209, 240);
+  border: rgb(88, 209, 240);
+}
+
+.subject-button:active {
+  background-color: rgb(13, 158, 194);
 }
 
 .lecture-button {
