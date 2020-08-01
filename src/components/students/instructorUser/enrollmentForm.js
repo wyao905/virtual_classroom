@@ -8,11 +8,12 @@ class EnrollmentForm extends Component {
     showForm = () => {
         return <form onSubmit={event => this.handleSubmit(event)}>
             <label>Enter Student Email: </label>
-            <input type="text"
+            <input id="student-enrollment-input"
+                   type="text"
                    name="content"
                    value={this.state.email}
                    onChange={event => this.handleChange(event)}/>
-            <input type="submit" value="Send" />
+            <input id="student-enrollment-button" type="submit" value="Enroll" />
         </form>
     }
 
@@ -33,7 +34,7 @@ class EnrollmentForm extends Component {
 
     render() {
         return(
-            <div>{this.showForm()}</div>
+            <div id="student-enrollment-form">{this.showForm()}</div>
         )
     }
 }

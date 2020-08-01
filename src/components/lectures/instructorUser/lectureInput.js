@@ -20,7 +20,7 @@ class LectureInput extends Component {
                            name="title"
                            type="text"
                            value={this.state.title}
-                           onChange={event => this.handleChange(event)}/>
+                           onChange={event => this.handleChange(event)}/><br/>
                     <input className="lecture-input-button" type="submit" value="Send" />
                 </form>
             } else {
@@ -29,7 +29,7 @@ class LectureInput extends Component {
                     <textarea id="lecture-content-input"
                               name="content"
                               value={this.state.content}
-                              onChange={event => this.handleChange(event)}/>
+                              onChange={event => this.handleChange(event)}/><br/>
                     <input className="lecture-input-button" type="submit" value="Send" />
                 </form>
             }
