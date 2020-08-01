@@ -195,6 +195,43 @@ a:link, a:visited, a:hover, a:active {
   background-color: rgb(13, 158, 194);
 }
 
+#lecture-input-container {
+  width: 12em;
+  margin: 0em 0em 0em 1em;
+  font-weight: 500;
+}
+
+#lecture-title-input {
+  border: none;
+  outline: none;
+}
+
+#lecture-content-input {
+  height: 8em;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.lecture-input-button {
+  margin: 0.5em 0em;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 550;
+  background-color: rgb(39, 190, 228);
+  outline: none;
+  border: none;
+}
+
+.lecture-input-button:hover {
+  background-color: rgb(88, 209, 240);
+  border: rgb(88, 209, 240);
+}
+
+.lecture-input-button:active {
+  background-color: rgb(13, 158, 194);
+}
+
 #lecture {
   background-color: rgb(255, 255, 255);
   width: 35em;

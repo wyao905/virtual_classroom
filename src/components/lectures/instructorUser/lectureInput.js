@@ -16,19 +16,21 @@ class LectureInput extends Component {
             if(this.props.classLecture.attributes.title === "") {
                 return <form onSubmit={event => this.handleSubmit(event)}>
                     <label>Enter Lecture Title</label><br/>
-                    <input name="title"
+                    <input id="lecture-title-input"
+                           name="title"
                            type="text"
                            value={this.state.title}
                            onChange={event => this.handleChange(event)}/>
-                    <input type="submit" value="Send" />
+                    <input className="lecture-input-button" type="submit" value="Send" />
                 </form>
             } else {
                 return <form onSubmit={event => this.handleSubmit(event)}>
                     <label>Enter Lecture Content</label><br/>
-                    <textarea name="content"
+                    <textarea id="lecture-content-input"
+                              name="content"
                               value={this.state.content}
                               onChange={event => this.handleChange(event)}/>
-                    <input type="submit" value="Send" />
+                    <input className="lecture-input-button" type="submit" value="Send" />
                 </form>
             }
         } else {
@@ -84,7 +86,7 @@ class LectureInput extends Component {
 
     render() {
         return(
-            <div>
+            <div id="lecture-input-container">
                 {this.classSessionButtons()}
                 {this.lectureInput()}
             </div>
