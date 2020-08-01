@@ -50,7 +50,8 @@ a:link, a:visited, a:hover, a:active {
 
 .input-text {
   margin: 0em 0em 1em;
-  opacity: 50%;
+  opacity: 60%;
+  outline: none;
 }
 
 .form-submit {
@@ -110,6 +111,30 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .subject-button:active {
+  background-color: rgb(13, 158, 194);
+}
+
+#new-subject-form {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+#new-subject-submit-button {
+  margin: 0em 0em 0em 0.25em;
+  font-size: 14px;
+  font-weight: 550;
+  border: none;
+  outline: none;
+  background-color: rgb(39, 190, 228);
+  color: rgb(255,255, 255);
+}
+
+#new-subject-submit-button:hover {
+  background-color: rgb(88, 209, 240);
+  border: rgb(88, 209, 240);
+}
+
+#new-subject-submit-button:active {
   background-color: rgb(13, 158, 194);
 }
 

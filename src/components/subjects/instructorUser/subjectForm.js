@@ -7,9 +7,9 @@ class SubjectForm extends Component {
 
     showForm = () => {
         return <form onSubmit={event => this.handleSubmit(event)}>
-            <label>Add new subject:</label>
-            <input className="input-text" name="name" type="text" onChange={event => this.handleChange(event)}/>
-            <input type="submit" value="Add"/>
+            <label>Add new subject: </label>
+            <input className="input-text" name="name" type="text" value={this.state.name} onChange={event => this.handleChange(event)}/>
+            <input id="new-subject-submit-button" type="submit" value="Add"/>
         </form>
     }
 
@@ -31,7 +31,7 @@ class SubjectForm extends Component {
 
     render() {
         return(
-            <div>{this.showForm()}</div>
+            <div id="new-subject-form">{this.showForm()}</div>
         )
     }
 }
