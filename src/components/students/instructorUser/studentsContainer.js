@@ -14,7 +14,6 @@ class StudentsContainer extends Component {
                     key={stu.id}
                     id={stu.id}
                     name={stu.attributes.name}
-                    email={stu.attributes.email}
                     handleClick={this.handleClick}/>
             } else {
                 return null
@@ -39,7 +38,7 @@ class StudentsContainer extends Component {
 
     render() {
         return(
-            <div>
+            <div id="student-cards-container">
                 {this.showStudents()}
                 {this.enrollStudent()}
             </div>

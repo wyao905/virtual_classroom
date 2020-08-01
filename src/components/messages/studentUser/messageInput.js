@@ -18,15 +18,16 @@ class MessageInput extends Component {
         //     targetSub = this.props.currentSubject
         // }
         return <form onSubmit={event => this.handleSubmit(event)}>
-            <div>
+            <div id="message-target-info">
                 To: {target.attributes.name} <br/>
                 Email: {target.attributes.email} <br/>
                 Subject: {targetSub.attributes.name} <br/>
             </div>
-            <textarea name="content"
+            <textarea id="message-input"
+                      name="content"
                       value={this.state.content}
-                      onChange={event => this.handleChange(event)}/>
-            <input type="submit" value="Send" />
+                      onChange={event => this.handleChange(event)}/><br/>
+            <input id="message-submit-button" type="submit" value="Send"/>
         </form>
     }
 

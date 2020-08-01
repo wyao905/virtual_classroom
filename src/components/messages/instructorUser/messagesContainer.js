@@ -37,12 +37,12 @@ class MessagesContainer extends Component {
                     } else {
                         origin = "Received from: "
                     }
-                    return <ul><Message
+                    return <ul id="message-list"><Message
                         origin={origin}
                         content={msg.attributes.content}
                         target={this.props.students.find(s => s.id === msg.relationships.student.data.id)}
                         date={msg.attributes.created_at.split("T")[0]}
-                        time={msg.attributes.created_at.split("T")[1]}/></ul>
+                        time={msg.attributes.created_at.split("T")[1].split(".")[0]}/></ul>
                 })
             } else {
                 return null
@@ -58,14 +58,14 @@ class MessagesContainer extends Component {
             return <MessageInput/>
         } else {
             return null
-        }        
+        }
     }
 
     render() {
         return(
-            <div>
-                {this.showMessage()}
-                {this.showMessageInput()}
+            <div id="messages-container" hidden={!this.props.messagedTarget}>
+                <div id="messages-container-left">{this.showMessageInput()}</div>
+                <div id="messages-container-right">{this.showMessage()}</div>
             </div>
         )
     }

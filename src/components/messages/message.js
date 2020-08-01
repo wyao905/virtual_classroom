@@ -1,13 +1,11 @@
 import React from 'react'
 
 function Message(props) {
-    return <li>
+    return <li className="message">
         {props.origin}
-        {props.target.attributes.name}
-        {props.target.attributes.email}
+        {props.target.attributes.name} ({props.target.attributes.email})
         <p>{props.content}</p>
-        {props.date}
-        {props.time}
+        Date: {props.date} Time: {props.time}
     </li>
 }
 

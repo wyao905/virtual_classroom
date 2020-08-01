@@ -1,3 +1,5 @@
+/* . for className, # for id */
+
 .errors {
   color: red;
   list-style-type: none;
@@ -86,7 +88,7 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   padding: 0.05em 0em 1em 0em;
   background-color: rgb(11, 127, 156);
-  border-bottom: solid 0.5em rgb(150, 150, 150);
+  border-bottom: solid 0.25em rgb(150, 150, 150);
 }
 
 .subject-button {
@@ -188,4 +190,95 @@ a:link, a:visited, a:hover, a:active {
 
 
 
-/* comments section */
+/* students and comments section */
+#student-cards-container {
+  padding: 1em;
+  background-color: rgb(11, 127, 156);
+  vertical-align: middle;
+  border-top: solid 0.25em rgb(150, 150, 150);
+}
+
+.student-cards-inactive {
+  width: 20%;
+  height: 3em;
+  margin: 0.25em;
+  font-size: 15px;
+  background-color: rgb(39, 190, 228);
+  color: rgb(255,255, 255);
+  border: solid 0.25em rgb(255, 255, 255);
+  outline: none;
+}
+
+.student-cards {
+  width: 20%;
+  height: 3em;
+  margin: 0.25em;
+  font-size: 15px;
+  background-color: rgb(39, 190, 228);
+  color: rgb(255,255, 255);
+  border: solid 0.25em rgb(255, 255, 255);
+  outline: none;
+}
+
+.student-cards:hover {
+  background-color: rgb(88, 209, 240);
+  border: solid 0.25em rgb(255, 255, 255);
+}
+
+.student-cards:active {
+  background-color: rgb(13, 158, 194);
+  border: solid 0.25em rgb(255, 255, 255);
+}
+
+#messages-container {
+  display: flex;
+  border: solid 0.25em rgb(11, 127, 156);
+}
+
+#message-target-info {
+  margin: 1em;
+  font-weight: 500;
+}
+
+#message-input {
+  margin: 0em 0.75em 1em 0.75em;
+  padding: 0.5em;
+  width: 100%;
+  height: 10em;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  border: solid 0.25em rgb(11, 127, 156);
+  outline: none;
+  resize: none;
+}
+
+#message-submit-button {
+  margin: 0em 1em 1em 1em;
+  width: 100%;
+  height: 3em;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 550;
+  background-color: rgb(39, 190, 228);
+  outline: none;
+  border: none;
+}
+
+#messages-container-left {
+  width: 40%;
+}
+
+#messages-container-right {
+  width: 60%;
+}
+
+#message-list {
+  list-style: none;
+}
+
+.message {
+  margin: 1em;
+  border-bottom: solid 0.1em rgb(11, 127, 156);
+}
