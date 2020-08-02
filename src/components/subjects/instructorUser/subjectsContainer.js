@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Subject from '../subject'
 import SubjectForm from './subjectForm'
 import {loadSubjectInfo, loadMessages, addSubject} from '../../../actions/fetchActions'
-import {clearLectureContent, setMessagedTarget} from '../../../actions/regularActions'
+import {clearLectureContent, setMessagedTarget, clearMessagedTarget} from '../../../actions/regularActions'
 
 class SubjectsContainer extends Component {
     showNewSubjectForm = () => {
@@ -23,6 +23,7 @@ class SubjectsContainer extends Component {
 
     handleClick = (id) => {
         this.props.loadSubjectInfo(id)
+        this.props.clearMessagedTarget()
         this.props.clearLectureContent()
     }
 
@@ -50,6 +51,7 @@ const mapDispatchToProps = dispatch => {
         loadSubjectInfo: (id) => dispatch(loadSubjectInfo(id)),
         clearLectureContent: () => dispatch(clearLectureContent()),
         setMessagedTarget: (id) => dispatch(setMessagedTarget(id)),
+        clearMessagedTarget: () => dispatch(clearMessagedTarget()),
         loadMessages: (userType, userId) => dispatch(loadMessages(userType, userId)),
         addSubject: (subject) => dispatch(addSubject(subject))
     }

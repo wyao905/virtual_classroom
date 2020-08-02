@@ -25,6 +25,12 @@ export const setMessagedTarget = id => {
     }
 }
 
+export const clearMessagedTarget = () => {
+    return {
+        type: 'CLEAR_MESSAGED_TARGET'
+    }
+}
+
 export const clearErrors = () => {
     return {
         type: 'CLEAR_ERRORS'

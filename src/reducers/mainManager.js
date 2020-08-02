@@ -241,6 +241,9 @@ function messagedTargetReducer(state = "", action) {
     case "SET_MESSAGED_TARGET":
       return action.id
 
+    case "CLEAR_MESSAGED_TARGET":
+      return ""
+
     case "LOGOUT":
       return ""
 
