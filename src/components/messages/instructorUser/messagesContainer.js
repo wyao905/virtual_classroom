@@ -27,7 +27,7 @@ class MessagesContainer extends Component {
             //         return null
             //     }
             // } else {
-            let displayMessages = this.props.messages.filter(msg => msg.relationships.student.data.id === this.props.messagedTarget)
+            let displayMessages = this.props.messages.filter(msg => msg.relationships.student.data.id === this.props.messagedTarget && msg.relationships.subject.data.id === this.props.subject.id)
             if(displayMessages.length > 0) {
                 let sorted = displayMessages.sort((a, b) => (a.created_at < b.created_at) ? 1 : -1)
                 return sorted.map(msg => {
