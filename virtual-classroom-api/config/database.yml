@@ -27,18 +27,18 @@
 
 development:
   adapter: postgresql
-  database: virtual_classroom_development
+  database: virtual_classroom
   pool: 5
   timeout: 5000
 
 test:
   adapter: postgresql
-  database: virtual_classroom_test
+  database: virtual_classroom
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
-  database: virtual_classroom_production
+  database: virtual_classroom
   pool: 5
   timeout: 5000

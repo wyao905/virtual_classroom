@@ -15,6 +15,14 @@ require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
+require 'pg'
+# require 'active_record'  # uncomment for not Rails environment
+
+ActiveRecord::Base.establish_connection(:adapter => "postgresql",
+                                        :username => "postgres",
+                                        :password => "password",
+                                        :database => "virtual_classroom")
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
