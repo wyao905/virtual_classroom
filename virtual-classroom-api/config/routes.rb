@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+  
   resources :enrollments
   resources :messages
   resources :students
