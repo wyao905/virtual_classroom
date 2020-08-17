@@ -1,9 +1,9 @@
 class CreateInstructors < ActiveRecord::Migration[6.0]
   def change
     create_table :instructors do |t|
-      t.string :name
-      t.string :password_digest
-      t.string :email
+      t.text :name
+      t.text :password_digest
+      t.text :email
 
       t.timestamps
     end

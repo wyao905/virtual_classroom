@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_03_31_224031) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "enrollments", force: :cascade do |t|
     t.integer "student_id", null: false
     t.integer "subject_id", null: false
