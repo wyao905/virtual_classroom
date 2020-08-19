@@ -7,4 +7,4 @@ io.on('connection', (client) => {
 });
 
 const port = 3000
-io.listen(port)
+io.listen(process.env.PORT || port)
