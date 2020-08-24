@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client'
 
-const socket = openSocket('http://localhost:3000')
+const socket = openSocket('https://vir-clsrm.herokuapp.com/')
 
 function updateLecture(lec) {
     socket.emit('lectureUpdated', lec)
