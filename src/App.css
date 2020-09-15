@@ -50,7 +50,7 @@ a:link, a:visited, a:hover, a:active {
 
 .input-text {
   margin: 0em 0em 1em;
-  opacity: 60%;
+  /* opacity: 60%; */
   outline: none;
 }
 
@@ -304,7 +304,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 #student-enrollment-input {
-  opacity: 60%;
+  /* opacity: 60%; */
   outline: none;
 }
 
