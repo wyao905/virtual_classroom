@@ -3,10 +3,10 @@ import {updateLecture} from '../api'
 export const initialFetch = () => {
     return(dispatch) => {
         dispatch({type: 'LOADING'})
-        fetch('http://vir-clsrm-api.herokuapp.com/instructors')
+        fetch('https://vir-clsrm-api.herokuapp.com/instructors')
             .then(response => {return response.json()})
             .then(responseInstructors => {
-                fetch('http://vir-clsrm-api.herokuapp.com/students')
+                fetch('https://vir-clsrm-api.herokuapp.com/students')
                     .then(response => {return response.json()})
                     .then(responseStudents => {
                         dispatch({type: 'ADD_INSTRUCTORS', instructors: responseInstructors.data})
@@ -29,7 +29,7 @@ export const checkLogin = (user, history) => {
         }
 
         dispatch({type: 'LOADING'})
-        fetch("http://vir-clsrm-api.herokuapp.com/sessions", configObj)
+        fetch("https://vir-clsrm-api.herokuapp.com/sessions", configObj)
             .then(response => {return response.json()})
             .then(verifiedUser => {
                 if(verifiedUser.errors === undefined) {
@@ -67,7 +67,7 @@ export const signNewUser = (user, history) => {
         if(user.userSelectOption === null) {
             dispatch({type: 'DISPLAY_ERRORS', errors: {user: ["must be student or instructor"]}})
         } else {
-            fetch(`http://vir-clsrm-api.herokuapp.com/${user.userSelectOption}s`, configObj)
+            fetch(`https://vir-clsrm-api.herokuapp.com/${user.userSelectOption}s`, configObj)
             .then(response => {return response.json()})
             .then(newUser => {
                 if(newUser.errors === undefined) {
@@ -91,7 +91,7 @@ export const signNewUser = (user, history) => {
 export const loadSubjectInfo = (id) => {
     return(dispatch) => {
         dispatch({type: 'LOADING'})
-        fetch(`http://vir-clsrm-api.herokuapp.com/subjects/${id}`)
+        fetch(`https://vir-clsrm-api.herokuapp.com/subjects/${id}`)
             .then(response => {return response.json()})
             .then(subject => {
                 let lectures = subject.included.filter(lec => lec.type === "lecture")
@@ -118,7 +118,7 @@ export const addLecture = (lecture) => {
         }
 
         dispatch({type: 'LOADING'})
-        fetch("http://vir-clsrm-api.herokuapp.com/lectures", configObj)
+        fetch("https://vir-clsrm-api.herokuapp.com/lectures", configObj)
             .then(response => {return response.json()})
             .then(newLecture => {
                 dispatch({type: 'ADD_LECTURE', lecture: newLecture.data})
@@ -140,7 +140,7 @@ export const addSubject = (subject) => {
         }
 
         dispatch({type: 'LOADING'})
-        fetch("http://vir-clsrm-api.herokuapp.com/subjects", configObj)
+        fetch("https://vir-clsrm-api.herokuapp.com/subjects", configObj)
             .then(response => {return response.json()})
             .then(newSubject => {
                 if(newSubject.errors === undefined) {
@@ -166,7 +166,7 @@ export const updateClassLecture = (lectureInfo, id) => {
         }
 
         dispatch({type: 'LOADING'})
-        fetch(`http://vir-clsrm-api.herokuapp.com/lectures/${id}`, configObj)
+        fetch(`https://vir-clsrm-api.herokuapp.com/lectures/${id}`, configObj)
             .then(response => {return response.json()})
             .then(updatedLecture => {
                 let updatedContent = updatedLecture.data.attributes.content.split("\n")
@@ -191,7 +191,7 @@ export const addMessage = (message) => {
         }
 
         dispatch({type: 'LOADING'})
-        fetch("http://vir-clsrm-api.herokuapp.com/messages", configObj)
+        fetch("https://vir-clsrm-api.herokuapp.com/messages", configObj)
             .then(response => {return response.json()})
             .then(newMessage => {
                 if(newMessage.errors === undefined) {
@@ -208,7 +208,7 @@ export const addMessage = (message) => {
 export const loadMessages = (type, id) => {
     return(dispatch) => {
         dispatch({type: 'LOADING'})
-        fetch(`http://vir-clsrm-api.herokuapp.com/${type}/${id}`)
+        fetch(`https://vir-clsrm-api.herokuapp.com/${type}/${id}`)
             .then(response => {return response.json()})
             .then(studentInfo => {
                 dispatch({type: 'ADD_MESSAGES', messages: studentInfo.included})
@@ -232,7 +232,7 @@ export const addEnrollment = (emailObj, subjectId) => {
         }
 
         dispatch({type: 'LOADING'})
-        fetch("http://vir-clsrm-api.herokuapp.com/enrollments", configObj)
+        fetch("https://vir-clsrm-api.herokuapp.com/enrollments", configObj)
             .then(response => {return response.json()})
             .then(newEnrollment => {
                 if(newEnrollment.errors === undefined) {
