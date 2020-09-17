@@ -12,7 +12,8 @@
 
 const cors = require('cors')
 const express = require('express')
-const socketIO = require('socket.io')(server, {origins: '*:*'})
+const socketIO = require('socket.io')
+// (server, {origins: '*:*'})
 
 const PORT = process.env.PORT || 3000
 const INDEX = "/index.html"
