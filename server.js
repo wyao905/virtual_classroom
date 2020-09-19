@@ -11,11 +11,14 @@
 // ___________________
 
 const app = require('express')
+const cors = require('cors')
 const server = require('https').createServer(app)
 const io = require('socket.io')(server, {origins: '*:*'})
 const PORT = process.env.PORT || 3000
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`))
+
+app().use(cors())
 
 io.on('connection', (socket) => {
     console.log(socket)
