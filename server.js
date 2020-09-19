@@ -8,27 +8,31 @@
 
 // io.listen(process.env.PORT || 3000)
 
-'use strict'
+// ___________________
 
-const cors = require('cors')
-const express = require('express')
-const socketIO = require('socket.io')
-// (server, {origins: '*:*'})
-
+const app = require('express')
+const server = require('https').createServer(app)
+const io = require('socket.io')(server, {origins: '*:*'})
 const PORT = process.env.PORT || 3000
-const INDEX = "/index.html"
 
-express.use(cors())
-express.options('*', cors())
-
-const server = express()
-    .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-    .listen(PORT, () => console.log(`Listening on ${PORT}`))
-
-const io = socketIO(server)
+server.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 io.on('connection', (socket) => {
     console.log(socket)
     console.log('Connected')
     socket.on('disconnect', () => console.log('Disconnected'))
 })
+
+// ____________________
+
+// const app = require('express')()
+// const server = require('http').createServer(app)
+// const options = {origins: "*:*"}
+// const io = require('socket.io')(server, options)
+// const PORT = process.env.PORT || 3000
+
+// io.on('connection', (socket) => {
+//     console.log('connected')
+// })
+
+// server.listen(PORT)
