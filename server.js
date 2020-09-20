@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000
 server.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 app.use(cors({
-    origin: 'http://example.com',
+    origin: 'https://vir-clsrm.herokuapp.com',
     optionsSuccessStatus: 200
 }))
 
