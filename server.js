@@ -27,7 +27,8 @@ app.use((req, res, next) => {
 })
 
 // const options = {origins: 'https://vir-clsrm.herokuapp.com/'}
-const io = require('socket.io')(server)
+const socket = require('socket.io')
+const io = socket(server)
 
 io.on('connect', (socket) => {
     console.log('Connected')
