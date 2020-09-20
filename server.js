@@ -18,8 +18,11 @@ const PORT = process.env.PORT || 3000
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
-app.use(cors())
-app.options('*', cors())
+app.use(cors({
+    origin: 'http://example.com',
+    optionsSuccessStatus: 200
+}))
+
 app.use((req, res, next) => {
     // res.header("Access-Control-Allow-Origin", "*")
     // res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS")
