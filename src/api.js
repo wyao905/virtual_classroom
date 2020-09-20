@@ -2,6 +2,8 @@ import openSocket from 'socket.io-client'
 
 const socket = openSocket()
 
+console.log(socket)
+
 socket.on('connect', () => {
     console.log('connected')
 })
