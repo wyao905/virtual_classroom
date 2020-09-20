@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 3000
 server.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 app.use(cors())
+app.options('*', cors())
 app.use((req, res, next) => {
     // res.header("Access-Control-Allow-Origin", "*")
     // res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS")
@@ -27,7 +28,6 @@ app.use((req, res, next) => {
     next()
 })
 
-// const options = {origins: 'https://vir-clsrm.herokuapp.com/'}
 const socket = require('socket.io')
 const io = socket(server)
 
