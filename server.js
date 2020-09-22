@@ -12,11 +12,8 @@
 
 const express = require('express')
 const app = express()
-// const cors = require('cors')
 const server = require('http').createServer(app)
 const PORT = process.env.PORT || 3000
-
-// app.use(cors())
 
 app.use(express.static(__dirname + '/build'))
 
@@ -25,7 +22,14 @@ const io = socket(server)
 
 io.on('connect', (socket) => {
     console.log('Connected')
-    socket.on('disconnect', () => console.log('Disconnected'))
+
+    socket.on('disconnect', () => {
+        console.log('Disconnected')
+    })
+
+    socket.on('lectureUpdated', (lec) => {
+        io.emit('reloadComponent', lec)
+    })
 })
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`))

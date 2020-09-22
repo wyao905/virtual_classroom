@@ -171,6 +171,7 @@ export const updateClassLecture = (lectureInfo, id) => {
             .then(updatedLecture => {
                 let updatedContent = updatedLecture.data.attributes.content.split("\n")
                 updatedLecture.data.attributes.content = updatedContent
+                
                 updateLecture(updatedLecture.data)
                 dispatch({type: 'START_CLASS', lecture: updatedLecture.data})
                 dispatch({type: 'UPDATE_LECTURE', lecture: updatedLecture.data})
