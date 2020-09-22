@@ -12,21 +12,13 @@
 
 const express = require('express')
 const app = express()
-const cors = require('cors')
+// const cors = require('cors')
 const server = require('http').createServer(app)
 const PORT = process.env.PORT || 3000
 
-server.listen(PORT, () => console.log(`Listening on ${PORT}`))
+// app.use(cors())
 
-app.use(cors())
-
-// app.use((req, res, next) => {
-//     // res.header("Access-Control-Allow-Origin", "*")
-//     // res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS")
-//     // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-//     console.log(res.header)
-//     next()
-// })
+app.use(express.static(__dirname + '/build'))
 
 const socket = require('socket.io')
 const io = socket(server)
@@ -35,3 +27,5 @@ io.on('connect', (socket) => {
     console.log('Connected')
     socket.on('disconnect', () => console.log('Disconnected'))
 })
+
+server.listen(PORT, () => console.log(`Listening on ${PORT}`))
