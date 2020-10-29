@@ -24,16 +24,4 @@ Alternatively, you can explore the app using previously created accounts from se
 | Email: genius@hogwarts.com<br>Password: hermoine | Email: mcgonagall@hogwarts.com<br>Password: gryffindor |
 | Email: thechosenone@hogwarts.com<br>Password: harry | |
 
-
-<!-- ### Project
-
-
-
-
-### Instructions
-
-
-
 [Try it here](https://vir-clsrm.herokuapp.com/)
-
-[GitHub Repo](https://github.com/wyao905/virtual_classroom.git) -->
